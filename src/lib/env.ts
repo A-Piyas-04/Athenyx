@@ -69,6 +69,17 @@ function readRawEnv(source: EnvSource): Record<string, string> {
     const value = source[key];
     if (value !== undefined && value.trim() !== "") raw[key] = value;
   }
+  if (process.env.ATHENYX_PREVIEW === "1") {
+    Object.assign(raw, {
+      DATABASE_URL: "postgresql://preview:preview@127.0.0.1:5432/preview",
+      AUTH_SECRET: "preview-only-secret-do-not-use-for-real-auth",
+      AUTH_GITHUB_ID: "preview",
+      AUTH_GITHUB_SECRET: "preview",
+      GITHUB_APP_ID: "1",
+      GITHUB_APP_SLUG: "preview",
+      GITHUB_APP_PRIVATE_KEY: "preview",
+    });
+  }
   return raw;
 }
 

@@ -15,7 +15,8 @@ const NEEDLE: Record<ReleaseVerdict, number> = { NO_GO: -60, CONDITIONAL_GO: 0, 
 
 function polar(cx: number, cy: number, r: number, deg: number) {
   const rad = (deg * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
+  // Keep SVG attributes identical between Node and browser math implementations.
+  return { x: Number((cx + r * Math.cos(rad)).toFixed(4)), y: Number((cy - r * Math.sin(rad)).toFixed(4)) };
 }
 
 function arc(cx: number, cy: number, r: number, from: number, to: number) {

@@ -17,6 +17,7 @@ const PRINCIPLES = [
 ];
 
 export default async function LoginPage() {
+  if (process.env.ATHENYX_PREVIEW === "1") redirect("/projects");
   const session = await auth();
   if (session?.user?.id) redirect("/projects");
 

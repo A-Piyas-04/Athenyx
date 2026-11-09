@@ -29,7 +29,9 @@ export default async function ReleaseGatePage({ params }: PageProps<"/p/[project
 
   let providers: ProviderNotice[] = [];
   let aiError: string | null = null;
-  try {
+  if (process.env.ATHENYX_PREVIEW === "1") {
+    providers = [{ name: "preview", label: "Sample preview", termsUrl: null, local: true }];
+  } else try {
     providers = providersForReviewType(getAiConfig(), "RELEASE");
   } catch (error) {
     aiError = error instanceof Error ? error.message : "The AI configuration is invalid.";

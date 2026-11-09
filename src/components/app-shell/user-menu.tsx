@@ -44,14 +44,16 @@ export function UserMenu({ name, email, image, onSignOut }: Props) {
             All projects
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <form action={onSignOut} className="w-full">
-            <button type="submit" className="flex w-full items-center gap-2">
-              <LogOut className="size-4" />
-              Sign out
-            </button>
-          </form>
-        </DropdownMenuItem>
+        {process.env.NEXT_PUBLIC_ATHENYX_PREVIEW === "1" ? null : (
+          <DropdownMenuItem asChild>
+            <form action={onSignOut} className="w-full">
+              <button type="submit" className="flex w-full items-center gap-2">
+                <LogOut className="size-4" />
+                Sign out
+              </button>
+            </form>
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

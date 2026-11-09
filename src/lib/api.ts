@@ -65,6 +65,10 @@ export function route<Args extends unknown[]>(
 ): (...args: Args) => Promise<NextResponse> {
   return async (...args: Args) => {
     try {
+      if (process.env.ATHENYX_PREVIEW === "1" && args[0] instanceof Request) {
+        const { previewApi } = await import("@/lib/preview-api");
+        return await previewApi(args[0]);
+      }
       return await handler(...args);
     } catch (error) {
       if (error instanceof ApiError) {

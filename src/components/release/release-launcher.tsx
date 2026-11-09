@@ -42,7 +42,7 @@ export function ReleaseLauncher({
       // Storage unavailable: ask every time.
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reads browser-only storage after hydration
-    setAcknowledged(stored);
+    setAcknowledged(stored || process.env.NEXT_PUBLIC_ATHENYX_PREVIEW === "1");
 
     const controller = new AbortController();
     fetch(`/api/projects/${projectId}/branches`, { signal: controller.signal })

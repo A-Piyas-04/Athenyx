@@ -1,6 +1,7 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/generated/prisma/client";
 import { env } from "@/lib/env";
+import { previewDb } from "@/lib/preview-db";
 
 /**
  * Prisma client singleton.
@@ -25,6 +26,7 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function getClient(): PrismaClient {
+  if (process.env.ATHENYX_PREVIEW === "1") return previewDb as unknown as PrismaClient;
   globalForPrisma.athenyxPrisma ??= createClient();
   return globalForPrisma.athenyxPrisma;
 }

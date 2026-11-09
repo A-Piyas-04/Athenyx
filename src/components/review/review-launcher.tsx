@@ -93,7 +93,7 @@ export function ReviewLauncher({
       // Storage unavailable: ask every time.
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reads browser-only storage after hydration
-    setAcknowledged(stored);
+    setAcknowledged(stored || process.env.NEXT_PUBLIC_ATHENYX_PREVIEW === "1");
   }, []);
 
   const set = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
