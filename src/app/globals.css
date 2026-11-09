@@ -1,0 +1,342 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Athenyx design tokens.
+ *
+ * Palette (from the brand swatch, light → dark):
+ *   gold-500 #E1C802 · gold-600 #C1AB01 · gold-700 #A28900
+ *   gold-800 #806800 · umber-800 #614501 · umber-900 #412201
+ *
+ * Rules: no translucent/blurred surfaces, no coloured shadows or glows,
+ * no accent stripes on containers, radius never above 6px. Separation comes
+ * from whitespace and type weight first, hairlines second, boxes last.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-link: var(--link);
+
+  --color-gold-500: #e1c802;
+  --color-gold-600: #c1ab01;
+  --color-gold-700: #a28900;
+  --color-gold-800: #806800;
+  --color-umber-800: #614501;
+  --color-umber-900: #412201;
+
+  --color-sev-critical: var(--sev-critical);
+  --color-sev-high: var(--sev-high);
+  --color-sev-medium: var(--sev-medium);
+  --color-sev-low: var(--sev-low);
+  --color-sev-info: var(--sev-info);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--background);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--ring);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display), var(--font-body), ui-sans-serif, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, SFMono-Regular, monospace;
+
+  /* Crisp corners: every radius token is capped at 6px. */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+  --radius-4xl: 6px;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+:root {
+  --radius: 4px;
+
+  --background: #fcfbf8;
+  --foreground: #21170a;
+  --card: #ffffff;
+  --card-foreground: #21170a;
+  --popover: #ffffff;
+  --popover-foreground: #21170a;
+
+  --primary: #e1c802;
+  --primary-hover: #cfb802;
+  --primary-foreground: #241600;
+
+  --secondary: #f2efe6;
+  --secondary-foreground: #2b1f0d;
+  --muted: #f3f0e8;
+  --muted-foreground: #6e624f;
+  --subtle: #9a8f7c;
+  --accent: #f6eebb;
+  --accent-foreground: #4a3600;
+
+  --destructive: #b42318;
+  --border: #e7e2d6;
+  --border-strong: #cfc7b5;
+  --input: #ddd6c6;
+  --ring: #a28900;
+  --link: #806800;
+
+  --sev-critical: #a5160c;
+  --sev-high: #dc4a1f;
+  --sev-medium: #c28f00;
+  --sev-low: #3f6aa6;
+  --sev-info: #8f8778;
+  --ok: #2f7d4f;
+  --warn: #a87400;
+  --bad: #b42318;
+
+  --chart-1: #e1c802;
+  --chart-2: #a28900;
+  --chart-3: #614501;
+  --chart-4: #3f6aa6;
+  --chart-5: #dc4a1f;
+
+  --cursor-ring: #21170a;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #14100a;
+  --foreground: #f2ede1;
+  --card: #1c170f;
+  --card-foreground: #f2ede1;
+  --popover: #201a11;
+  --popover-foreground: #f2ede1;
+
+  --primary: #e1c802;
+  --primary-hover: #f0d81a;
+  --primary-foreground: #1a1203;
+
+  --secondary: #261f14;
+  --secondary-foreground: #ece5d4;
+  --muted: #221c13;
+  --muted-foreground: #a99d87;
+  --subtle: #7a6f5c;
+  --accent: #2e2711;
+  --accent-foreground: #f0dc5a;
+
+  --destructive: #f2705f;
+  --border: #2f2719;
+  --border-strong: #463a26;
+  --input: #3a3020;
+  --ring: #e1c802;
+  --link: #e1c802;
+
+  --sev-critical: #ff6a55;
+  --sev-high: #ff9257;
+  --sev-medium: #e1c802;
+  --sev-low: #85a8de;
+  --sev-info: #8c8371;
+  --ok: #6bc68f;
+  --warn: #e8b931;
+  --bad: #ff6a55;
+
+  --chart-1: #e1c802;
+  --chart-2: #c1ab01;
+  --chart-3: #806800;
+  --chart-4: #85a8de;
+  --chart-5: #ff9257;
+
+  --cursor-ring: #f2ede1;
+  color-scheme: dark;
+}
+
+/* ---------- Utilities ---------- */
+
+/* Display headline: the typographic voice of the product. */
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  font-variation-settings: "opsz" 96;
+}
+
+@utility text-title {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-variation-settings: "opsz" 40;
+}
+
+/* Section heading: weight, not decoration. */
+@utility text-section {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* Small quiet label (sentence case, never all caps). */
+@utility text-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+/* A hairline divider used between sections instead of boxes. */
+@utility hairline {
+  border-color: var(--border);
+}
+
+/* Underline that draws in on hover; used for inline text links. */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 280ms var(--ease-out-quint);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Interactive list row: quiet background shift on hover. */
+@utility row-hover {
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+  &:hover {
+    background-color: var(--muted);
+  }
+}
+
+@keyframes athenyx-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* Plain status dot that blinks while something is in progress (no glow). */
+@utility live-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--primary);
+  animation: athenyx-blink 1.4s ease-in-out infinite;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/60;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  code,
+  kbd,
+  pre {
+    font-feature-settings: "liga" 0;
+  }
+  :focus-visible {
+    outline-offset: 2px;
+  }
+  /* Hide the decorative cursor follower where it can't help. */
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    [data-cursor] {
+      display: none !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Theme switch: the new theme is revealed by a circle growing from the toggle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}

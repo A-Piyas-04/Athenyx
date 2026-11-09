@@ -1,0 +1,279 @@
+// Athenyx data model — see dev-plan/02_data_model.md
+// Prisma 7: the datasource URL lives in prisma.config.ts, not here.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------- Auth.js ----------
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  githubLogin   String?
+  createdAt     DateTime  @default(now())
+  accounts      Account[]
+  sessions      Session[]
+  projects      Project[]
+}
+
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  access_token             String? @db.Text
+  expires_at               Int?
+  refresh_token_expires_in Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ---------- Projects ----------
+model Project {
+  id              String    @id @default(cuid())
+  userId          String
+  installationId  Int
+  repoId          Int
+  repoOwner       String
+  repoName        String
+  defaultBranch   String
+  selectedBranch  String
+  latestKnownSha  String?
+  latestCheckedAt DateTime?
+  lastReviewedSha String?
+  lastReviewedAt  DateTime?
+  projectMap      Json?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  runs      ReviewRun[]
+  findings  Finding[]
+  decisions Decision[]
+
+  @@unique([userId, repoId])
+}
+
+// ---------- Review runs (also the job queue) ----------
+enum ReviewType {
+  PROJECT_HEALTH
+  LATEST_CHANGES
+  ASK
+  PROPOSAL
+  ISSUE
+  RELEASE
+  RECHECK
+}
+
+enum RunStatus {
+  QUEUED
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum RunStage {
+  QUEUED
+  RESOLVING_COMMIT
+  FETCHING_SNAPSHOT
+  MAPPING_PROJECT
+  SELECTING_CONTEXT
+  REVIEWING
+  VALIDATING
+  SUMMARIZING
+  SAVING
+  DONE
+}
+
+enum ReleaseVerdict {
+  GO
+  CONDITIONAL_GO
+  NO_GO
+}
+
+model ReviewRun {
+  id            String          @id @default(cuid())
+  projectId     String
+  type          ReviewType
+  status        RunStatus       @default(QUEUED)
+  stage         RunStage        @default(QUEUED)
+  branch        String
+  commitSha     String?
+  baseSha       String?
+  input         Json?
+  personas      String[]
+  personaStatus Json?
+  coverage      Json?
+  summary       String?         @db.Text
+  answer        String?         @db.Text
+  verdict       ReleaseVerdict?
+  releaseReport Json?
+  error         String?
+  usage         Json?
+  degraded      Boolean         @default(false)
+  heartbeatAt   DateTime?
+  createdAt     DateTime        @default(now())
+  startedAt     DateTime?
+  finishedAt    DateTime?
+
+  project           Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  findingsFirstSeen Finding[]      @relation("FirstSeenRun")
+  checks            FindingCheck[]
+
+  @@index([status, createdAt])
+  @@index([projectId, createdAt])
+}
+
+// ---------- Findings ----------
+enum Severity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+  INFO
+}
+
+enum Classification {
+  VERIFIED_DEFECT
+  POTENTIAL_RISK
+  DESIGN_CONCERN
+}
+
+enum Confidence {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum FindingStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  ACCEPTED_RISK
+  DISMISSED
+}
+
+model Finding {
+  id                String         @id @default(cuid())
+  projectId         String
+  firstSeenRunId    String
+  lastSeenRunId     String
+  lastSeenSha       String
+  persona           String
+  model             String?
+  title             String
+  observation       String         @db.Text
+  impact            String         @db.Text
+  classification    Classification
+  severity          Severity
+  confidence        Confidence
+  status            FindingStatus  @default(OPEN)
+  evidence          Json
+  userPremise       String?        @db.Text
+  options           Json
+  recommendation    Json?
+  verification      String         @db.Text
+  chosenOptionIndex Int?
+  statusNote        String?        @db.Text
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  project       Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  firstSeenRun  ReviewRun         @relation("FirstSeenRun", fields: [firstSeenRunId], references: [id])
+  checks        FindingCheck[]
+  decisionLinks DecisionFinding[]
+
+  @@index([projectId, status, severity])
+}
+
+enum CheckResult {
+  RESOLVED
+  STILL_PRESENT
+  PARTIALLY_RESOLVED
+  UNVERIFIABLE
+}
+
+model FindingCheck {
+  id        String      @id @default(cuid())
+  findingId String
+  runId     String
+  commitSha String
+  result    CheckResult
+  reasoning String      @db.Text
+  evidence  Json?
+  createdAt DateTime    @default(now())
+
+  finding Finding   @relation(fields: [findingId], references: [id], onDelete: Cascade)
+  run     ReviewRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+}
+
+// ---------- Decisions ----------
+enum DecisionStatus {
+  PROPOSED
+  ACCEPTED
+  SUPERSEDED
+  REVERTED
+}
+
+model Decision {
+  id             String         @id @default(cuid())
+  projectId      String
+  title          String
+  context        String         @db.Text
+  chosenOption   String         @db.Text
+  rationale      String         @db.Text
+  alternatives   Json
+  constraints    String?        @db.Text
+  assumptions    String?        @db.Text
+  relatedFiles   String[]
+  status         DecisionStatus @default(ACCEPTED)
+  commitSha      String?
+  supersededById String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  project      Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  findingLinks DecisionFinding[]
+}
+
+model DecisionFinding {
+  decisionId String
+  findingId  String
+
+  decision Decision @relation(fields: [decisionId], references: [id], onDelete: Cascade)
+  finding  Finding  @relation(fields: [findingId], references: [id], onDelete: Cascade)
+
+  @@id([decisionId, findingId])
+}
