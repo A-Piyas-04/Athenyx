@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { PersonaCrest } from "@/components/marketing/board/persona-crest";
+import { PersonaPortrait } from "@/components/marketing/board/persona-portrait";
 import { ARBITER_FOCUS, PERSONA_EXAMPLES, SEATING_NOTE } from "@/components/marketing/copy";
 import { Reveal } from "@/components/motion/primitives";
 import { ROSTER } from "@/lib/review/board";
@@ -50,7 +50,7 @@ export default function BoardPage() {
         {core.map((seat, i) => (
           <Reveal as="li" key={seat.key} delay={Math.min(i * 0.04, 0.3)}>
             <div className="flex flex-col gap-5 border-t border-border pt-8 sm:flex-row sm:gap-7">
-              <PersonaCrest persona={seat.key} size={72} />
+              <PersonaPortrait persona={seat.key} size={72} />
               <div className="min-w-0 space-y-2">
                 <h2 className="font-display text-xl font-semibold tracking-tight">{seat.name}</h2>
                 <p className="max-w-[70ch] leading-relaxed text-muted-foreground">{seat.focus}</p>
@@ -70,7 +70,7 @@ export default function BoardPage() {
       <ul className="mt-8 space-y-10">
         {others.map((seat) => (
           <li key={seat.key} className="flex flex-col gap-5 border-t border-border pt-8 sm:flex-row sm:gap-7">
-            <PersonaCrest persona={seat.key} size={56} />
+            <PersonaPortrait persona={seat.key} size={56} />
             <div className="min-w-0 space-y-2">
               <h3 className="font-display text-lg font-semibold tracking-tight">{seat.name}</h3>
               <p className="max-w-[70ch] leading-relaxed text-muted-foreground">

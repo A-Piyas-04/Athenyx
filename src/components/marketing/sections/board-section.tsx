@@ -1,4 +1,4 @@
-import { PersonaCrest } from "@/components/marketing/board/persona-crest";
+import { PersonaPortrait } from "@/components/marketing/board/persona-portrait";
 import { BoardGrid, type BoardSeat } from "@/components/marketing/board/board-grid";
 import { SeatingDemo } from "@/components/marketing/board/seating-demo";
 import { ARBITER_FOCUS, PERSONA_EXAMPLES } from "@/components/marketing/copy";
@@ -49,7 +49,7 @@ export function BoardSection() {
       <Reveal delay={0.1}>
         <ul className="mt-12 grid gap-10 border-t border-border pt-10 sm:grid-cols-2 sm:gap-16">
           <li className="flex gap-5">
-            <PersonaCrest persona="evidence_arbiter" size={56} />
+            <PersonaPortrait persona="evidence_arbiter" size={56} />
             <div className="space-y-1.5">
               <h3 className="text-section">The Evidence Arbiter</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
@@ -58,7 +58,7 @@ export function BoardSection() {
             </div>
           </li>
           <li className="flex gap-5">
-            <PersonaCrest persona="ai_ml" size={56} />
+            <PersonaPortrait persona="ai_ml" size={56} />
             <div className="space-y-1.5">
               <h3 className="text-section">{aiMl.name}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
