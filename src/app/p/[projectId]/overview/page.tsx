@@ -205,6 +205,9 @@ export default async function OverviewPage({ params }: PageProps<"/p/[projectId]
           <Reveal delay={0.04}>
             <Section title="The board" description="Who raised the open findings. Gold seats flag serious issues.">
               <BoardStrip projectId={project.id} counts={byPersona} />
+              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                Counts span every review so far, not one run. <TextLink href="/board">Meet the board</TextLink>
+              </p>
             </Section>
           </Reveal>
 

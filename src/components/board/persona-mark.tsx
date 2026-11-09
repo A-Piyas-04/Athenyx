@@ -15,7 +15,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const ICONS: Record<string, LucideIcon> = {
+/** Each specialist's icon. Shared with the marketing crests. */
+export const PERSONA_ICONS: Record<string, LucideIcon> = {
   architecture: Building2,
   security: ShieldHalf,
   data_integrity: Database,
@@ -52,7 +53,7 @@ export function PersonaMark({
   tone?: "active" | "idle" | "dim" | "gold";
   className?: string;
 }) {
-  const Icon = ICONS[persona] ?? UserRound;
+  const Icon = PERSONA_ICONS[persona] ?? UserRound;
   return (
     <span
       aria-hidden="true"

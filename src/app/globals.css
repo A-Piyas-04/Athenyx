@@ -340,3 +340,79 @@
 ::view-transition-new(root) {
   z-index: 2;
 }
+
+/* ---------- Cursor fog ---------- */
+
+/*
+ * The pointer fog (components/motion/cursor-follower.tsx). Softness comes from
+ * multi-stop radial gradients, never filter: blur() — a blurred layer the size
+ * of the haze would re-rasterise every frame the pointer moves.
+ *
+ * The blend mode has to flip with the theme: nothing reads as haze on both
+ * #fcfbf8 and #14100a. Light multiplies toward umber (a shadow in the air);
+ * dark screens toward gold (lamp light).
+ */
+:root {
+  --fog-blend: multiply;
+  --fog-haze-size: 300px;
+  --fog-mid-size: 128px;
+  --fog-haze: radial-gradient(
+    closest-side,
+    rgb(97 69 1 / 0.085) 0%,
+    rgb(97 69 1 / 0.062) 26%,
+    rgb(97 69 1 / 0.036) 48%,
+    rgb(97 69 1 / 0.016) 67%,
+    rgb(97 69 1 / 0.005) 84%,
+    transparent 100%
+  );
+  --fog-mid: radial-gradient(
+    closest-side,
+    rgb(65 34 1 / 0.1) 0%,
+    rgb(65 34 1 / 0.055) 40%,
+    rgb(65 34 1 / 0.018) 70%,
+    transparent 100%
+  );
+  --fog-core: rgb(33 23 10 / 0.5);
+}
+
+.dark {
+  --fog-blend: screen;
+  --fog-haze: radial-gradient(
+    closest-side,
+    rgb(225 200 2 / 0.12) 0%,
+    rgb(225 200 2 / 0.082) 26%,
+    rgb(193 171 1 / 0.046) 48%,
+    rgb(193 171 1 / 0.02) 67%,
+    rgb(128 104 0 / 0.006) 84%,
+    transparent 100%
+  );
+  --fog-mid: radial-gradient(
+    closest-side,
+    rgb(240 216 26 / 0.13) 0%,
+    rgb(225 200 2 / 0.07) 40%,
+    rgb(193 171 1 / 0.022) 70%,
+    transparent 100%
+  );
+  --fog-core: rgb(242 237 225 / 0.58);
+}
+
+/* ---------- The marketing surface ---------- */
+
+/*
+ * Scoped exception to the rules at the top of this file. The landing page is
+ * the one surface allowed depth, fog and glow; the six project tabs are not.
+ * marketing-surface.tsx sets this on <html> and removes it on navigation, so
+ * the exception cannot leak into /p/**. The 6px radius cap still applies —
+ * that one is brand identity, not restraint.
+ */
+html[data-surface="marketing"] {
+  --fog-haze-size: 440px;
+  --fog-mid-size: 180px;
+  --depth-shadow: 0 30px 80px -40px rgb(65 34 1 / 0.45);
+  --plate-shadow: 0 2px 0 0 rgb(255 255 255 / 0.5), 0 18px 40px -28px rgb(65 34 1 / 0.5);
+}
+
+html[data-surface="marketing"].dark {
+  --depth-shadow: 0 30px 90px -40px rgb(0 0 0 / 0.8);
+  --plate-shadow: 0 1px 0 0 rgb(240 220 90 / 0.14), 0 18px 44px -28px rgb(0 0 0 / 0.75);
+}

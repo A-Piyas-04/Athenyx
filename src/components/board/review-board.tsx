@@ -227,7 +227,7 @@ export function ReviewBoard({
 
       {absent.length > 0 ? (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold">Not on this review</h3>
+          <h3 className="text-sm font-semibold">Not consulted on this review</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-3">
             {absent.map((seat) => (
               <li key={seat.key} className="flex items-center gap-2 text-sm text-muted-foreground" title={seat.focus}>
@@ -237,7 +237,10 @@ export function ReviewBoard({
               </li>
             ))}
           </ul>
-          <p className="text-xs text-muted-foreground">The planner seats the specialists that fit the request and your stack, two or three at a time.</p>
+          <p className="max-w-[72ch] text-xs text-muted-foreground">
+            The planner seats the specialists that fit the request and your stack, two or three at a time. These seats were
+            never asked, so their silence is not a sign-off &mdash; nothing here has been cleared by them.
+          </p>
         </div>
       ) : null}
     </section>
