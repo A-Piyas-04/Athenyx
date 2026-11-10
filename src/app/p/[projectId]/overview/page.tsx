@@ -74,28 +74,29 @@ export default async function OverviewPage({ params }: PageProps<"/p/[projectId]
     <div className="space-y-20">
       {/* Health: the one statement this page exists to make. */}
       <section aria-label="Project health" className="space-y-10">
-        <div className="flex flex-wrap items-end justify-between gap-8">
-          <h1 className="text-display text-[2.75rem] sm:text-[4.5rem]">
-            {n === 0 ? (
-              "No open risks."
-            ) : (
-              <>
-                <CountUp value={n} /> open risk{n === 1 ? "" : "s"}.
-              </>
-            )}
-            <span className="block text-muted-foreground">{subline}</span>
-          </h1>
-          <Button asChild size="lg">
-            <Link href={`${base}/review-lab`}>
-              <Play />
-              Review now
-            </Link>
-          </Button>
+        <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
+          <div className="space-y-8">
+            <h1 className="text-display text-[2.75rem] sm:text-[4.5rem]">
+              {n === 0 ? (
+                "No open risks."
+              ) : (
+                <>
+                  <CountUp value={n} /> open risk{n === 1 ? "" : "s"}.
+                </>
+              )}
+              <span className="block text-muted-foreground">{subline}</span>
+            </h1>
+            <Button asChild size="lg">
+              <Link href={`${base}/review-lab`}>
+                <Play />
+                Review now
+              </Link>
+            </Button>
+          </div>
+          <SeverityRing counts={counts.open} total={n} size={240} className="mx-auto md:mx-0" />
         </div>
 
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
-          <SeverityRing counts={counts.open} total={n} />
-          <div className="flex-1 space-y-4">
+        <div className="space-y-4">
           <div className="flex h-2 w-full gap-[3px] overflow-hidden rounded-[2px] bg-muted" role="img" aria-label="Open findings by severity">
             {n > 0
               ? SEVERITIES.map((severity, index) => {
@@ -125,7 +126,6 @@ export default async function OverviewPage({ params }: PageProps<"/p/[projectId]
             <Link href={`${base}/risks?status=RESOLVED`} className="text-muted-foreground transition-colors hover:text-foreground">
               Resolved <span className="font-semibold text-ok tabular-nums">{counts.resolved}</span>
             </Link>
-          </div>
           </div>
         </div>
       </section>
