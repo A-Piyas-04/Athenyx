@@ -13,6 +13,9 @@ export type SessionUser = {
 
 /** Returns the signed-in user, or null. */
 export async function getSessionUser(): Promise<SessionUser | null> {
+  if (process.env.ATHENYX_PREVIEW === "1") {
+    return { id: "preview-user", name: "Preview user", email: "preview@localhost", image: null };
+  }
   const session = await auth();
   if (!session?.user?.id) return null;
   return {

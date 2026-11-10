@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "dev:preview": "node scripts/preview-dev.mjs",
+    "preview:reset": "node scripts/preview-reset.mjs",
     "build": "next build",
     "start": "next start",
     "worker": "tsx src/worker/index.ts",

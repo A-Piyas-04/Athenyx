@@ -15,6 +15,9 @@ export const ACK_KEY = "athenyx:data-notice-ack";
  */
 export function DataNotice({ providers, allLocal }: { providers: ProviderNotice[]; allLocal: boolean }) {
   const [open, setOpen] = useState(false);
+  if (process.env.NEXT_PUBLIC_ATHENYX_PREVIEW === "1") {
+    return <p className="text-sm text-muted-foreground">Preview mode: this action uses sample data. No repository is read and no AI service is called.</p>;
+  }
   if (allLocal) {
     return <p className="text-sm text-muted-foreground">Code is analyzed locally and not sent to external AI services. Nothing is changed in your repository.</p>;
   }

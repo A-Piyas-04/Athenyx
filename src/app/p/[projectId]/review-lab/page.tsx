@@ -25,12 +25,16 @@ export default async function ReviewLabPage({ params, searchParams }: PageProps<
   // Provider names for the data notice come from server configuration.
   let aiError: string | null = null;
   const notices = {} as Record<LabType, ProviderNotice[]>;
-  try {
-    const config = getAiConfig();
-    for (const t of LAB_TYPES) notices[t] = providersForReviewType(config, t);
-  } catch (error) {
-    aiError = error instanceof Error ? error.message : "The AI configuration is invalid.";
-    for (const t of LAB_TYPES) notices[t] = [];
+  if (process.env.ATHENYX_PREVIEW === "1") {
+    for (const t of LAB_TYPES) notices[t] = [{ name: "preview", label: "Sample preview", termsUrl: null, local: true }];
+  } else {
+    try {
+      const config = getAiConfig();
+      for (const t of LAB_TYPES) notices[t] = providersForReviewType(config, t);
+    } catch (error) {
+      aiError = error instanceof Error ? error.message : "The AI configuration is invalid.";
+      for (const t of LAB_TYPES) notices[t] = [];
+    }
   }
 
   const requested = typeof type === "string" ? (type as LabType) : null;

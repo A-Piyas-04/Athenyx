@@ -15,18 +15,32 @@ export const metadata = { title: "Connect repository · Athenyx" };
 
 export default async function NewProjectPage() {
   const user = await requirePageUser();
-  const installUrl = appInstallUrl();
+  const preview = process.env.ATHENYX_PREVIEW === "1";
+  const installUrl = preview ? "/projects" : appInstallUrl();
 
   let installations: UserInstallation[] = [];
   let loadError: "reauth" | "github" | null = null;
 
-  try {
-    const token = await getUserGithubToken(user.id);
-    installations = await listUserInstallationsWithRepos(token);
-  } catch (error) {
-    loadError = isReauthRequired(error) ? "reauth" : "github";
-    if (!isReauthRequired(error)) {
-      console.error("[athenyx] Failed to list installations:", error);
+  if (preview) {
+    installations = [
+      {
+        id: 1,
+        account: { login: "acme", type: "Organization" },
+        repositorySelection: "selected",
+        repos: [
+          { id: 1, name: "splitwise-lite", fullName: "acme/splitwise-lite", owner: "acme", defaultBranch: "main", private: false },
+        ],
+      },
+    ];
+  } else {
+    try {
+      const token = await getUserGithubToken(user.id);
+      installations = await listUserInstallationsWithRepos(token);
+    } catch (error) {
+      loadError = isReauthRequired(error) ? "reauth" : "github";
+      if (!isReauthRequired(error)) {
+        console.error("[athenyx] Failed to list installations:", error);
+      }
     }
   }
 
