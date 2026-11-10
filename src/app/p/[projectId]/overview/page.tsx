@@ -8,6 +8,7 @@ import { CountUp, GrowBar, Reveal, Stagger, StaggerItem } from "@/components/mot
 import { Section, TextLink } from "@/components/page-header";
 import { VerdictText } from "@/components/release/verdict-card";
 import { VerdictGauge } from "@/components/visuals/verdict-gauge";
+import { SeverityRing } from "@/components/visuals/severity-ring";
 import { RelativeTime } from "@/components/relative-time";
 import { Button } from "@/components/ui/button";
 import { requirePageProject } from "@/lib/authz";
@@ -92,7 +93,9 @@ export default async function OverviewPage({ params }: PageProps<"/p/[projectId]
           </Button>
         </div>
 
-        <div className="space-y-4">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
+          <SeverityRing counts={counts.open} total={n} />
+          <div className="flex-1 space-y-4">
           <div className="flex h-2 w-full gap-[3px] overflow-hidden rounded-[2px] bg-muted" role="img" aria-label="Open findings by severity">
             {n > 0
               ? SEVERITIES.map((severity, index) => {
@@ -122,6 +125,7 @@ export default async function OverviewPage({ params }: PageProps<"/p/[projectId]
             <Link href={`${base}/risks?status=RESOLVED`} className="text-muted-foreground transition-colors hover:text-foreground">
               Resolved <span className="font-semibold text-ok tabular-nums">{counts.resolved}</span>
             </Link>
+          </div>
           </div>
         </div>
       </section>

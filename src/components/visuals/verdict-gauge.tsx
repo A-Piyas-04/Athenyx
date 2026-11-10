@@ -13,9 +13,12 @@ const SEGMENTS: { verdict: ReleaseVerdict; from: number; to: number; tone: strin
 /** Needle angle (degrees from pointing straight up). */
 const NEEDLE: Record<ReleaseVerdict, number> = { NO_GO: -60, CONDITIONAL_GO: 0, GO: 60 };
 
+/** Round so server and client serialize identical path strings (sin/cos differ by a ULP across JS engines, which trips React hydration). */
+const round = (n: number) => Math.round(n * 1000) / 1000;
+
 function polar(cx: number, cy: number, r: number, deg: number) {
   const rad = (deg * Math.PI) / 180;
-  return { x: cx + r * Math.cos(rad), y: cy - r * Math.sin(rad) };
+  return { x: round(cx + r * Math.cos(rad)), y: round(cy - r * Math.sin(rad)) };
 }
 
 function arc(cx: number, cy: number, r: number, from: number, to: number) {
@@ -80,7 +83,7 @@ export function VerdictGauge({
       })}
 
       <motion.g
-        style={{ originX: `${cx}px`, originY: `${cy}px` }}
+        style={{ transformBox: "view-box", originX: `${cx}px`, originY: `${cy}px` }}
         initial={{ rotate: -90 }}
         animate={{ rotate: NEEDLE[verdict] }}
         transition={{ type: "spring", stiffness: 70, damping: 9, delay: 0.45 }}

@@ -91,9 +91,12 @@ const R = 84;
 const VIEW_W = 200;
 const VIEW_H = 112;
 
+/** Round to a fixed precision so the server and client serialize paths identically (avoids hydration drift from sin/cos ULP differences across JS engines). */
+const round = (n: number) => Math.round(n * 1000) / 1000;
+
 function polar(r: number, deg: number) {
   const rad = (deg * Math.PI) / 180;
-  return { x: CX + r * Math.cos(rad), y: CY - r * Math.sin(rad) };
+  return { x: round(CX + r * Math.cos(rad)), y: round(CY - r * Math.sin(rad)) };
 }
 
 function arc(r: number, from: number, to: number) {
@@ -177,7 +180,7 @@ function BigGauge({ caption, bands, initial }: { caption: string; bands: Band[];
         })}
 
         <motion.g
-          style={{ originX: `${CX}px`, originY: `${CY}px` }}
+          style={{ transformBox: "view-box", originX: `${CX}px`, originY: `${CY}px` }}
           initial={reduce ? false : { rotate: needleAngle(initial, bands.length) }}
           animate={{ rotate: needleAngle(active, bands.length) }}
           transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 72, damping: 11 }}
