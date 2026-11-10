@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Your dream team, free</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--teal); }
+  .rays { --rx: 50%; --ry: 52%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 44px; text-align: center; }
+  .title .a { font-size: 78px; }
+  .title .b { font-size: 170px; margin-top: 4px; display: inline-block; transform: rotate(-3deg); }
+
+  .burst { position: absolute; right: 30px; top: 196px; width: 160px; height: 160px; transform: rotate(12deg); }
+
+  .crew .pop { --w: 128px; }
+
+  .cta {
+    position: absolute;
+    left: 50%; top: 742px;
+    transform: translateX(-50%) rotate(-2deg);
+    display: flex; align-items: center; gap: 14px;
+    background: var(--yellow);
+    border: 5px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: 7px 9px 0 var(--ink);
+    padding: 18px 34px;
+    font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 34px; letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .cta svg { width: 38px; height: 38px; fill: var(--ink); }
+  .note { position: absolute; left: 0; right: 0; top: 856px; text-align: center; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 22px; opacity: 0.8; }
+
+  .brand { left: 50%; transform: translateX(-50%); bottom: 36px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="left:0;bottom:0;width:280px;height:260px;-webkit-mask:linear-gradient(45deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">Your dream team is</div>
+  <div class="b outline">FREE.</div>
+</div>
+
+<svg class="burst" viewBox="0 0 160 160">
+  <polygon id="star" fill="#ffd60a" stroke="#1a1206" stroke-width="5" stroke-linejoin="round" />
+  <text x="80" y="98" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="56" fill="#1a1206" letter-spacing="-2">$0</text>
+</svg>
+
+<div class="crew">
+  <div class="pop" style="--c:var(--lilac);left:28px;top:486px;transform:rotate(-6deg)"><div class="disc"></div><img src="../assets/ninja.svg" alt="" /></div>
+  <div class="pop" style="--c:var(--sky);left:174px;top:454px;transform:rotate(-3deg)"><div class="disc"></div><img src="../assets/judge.svg" alt="" /></div>
+  <div class="pop" style="--c:var(--mint);left:320px;top:440px"><div class="disc"></div><img src="../assets/scientist.svg" alt="" /></div>
+  <div class="pop" style="--c:var(--pink);left:466px;top:454px;transform:rotate(3deg)"><div class="disc"></div><img src="../assets/artist.svg" alt="" /></div>
+  <div class="pop" style="--c:var(--orange);left:612px;top:486px;transform:rotate(6deg)"><div class="disc"></div><img src="../assets/wizard.svg" alt="" /></div>
+</div>
+<img class="emoji" src="../assets/wave.svg" style="left:120px;top:400px;width:80px;transform:rotate(-14deg)" alt="" />
+<img class="emoji" src="../assets/wave.svg" style="left:570px;top:396px;width:80px;transform:scaleX(-1) rotate(-14deg)" alt="" />
+<img class="emoji" src="../assets/gift.svg" style="left:36px;top:700px;width:120px;transform:rotate(-10deg)" alt="" />
+<img class="emoji" src="../assets/popper.svg" style="left:620px;top:700px;width:110px;transform:scaleX(-1) rotate(-6deg)" alt="" />
+
+<div class="cta">
+  <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+  Sign in with GitHub
+</div>
+<div class="note">No paid API keys needed.</div>
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  const pts = [];
+  for (let i = 0; i < 24; i++) {
+    const a = (i * Math.PI) / 12 - Math.PI / 2;
+    const r = i % 2 ? 58 : 76;
+    pts.push(`${80 + r * Math.cos(a)},${80 + r * Math.sin(a)}`);
+  }
+  document.getElementById("star").setAttribute("points", pts.join(" "));
+  confetti({ seed: 110, count: 34, zones: [[20, 300, 240, 90], [200, 640, 380, 80], [40, 900, 160, 60], [570, 900, 160, 60]] });
+</script>
+</body>
+</html>

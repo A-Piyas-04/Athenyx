@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Release Gate</title>
+<link rel="stylesheet" href="poster.css" />
+<style>
+  .glow.a { width: 560px; height: 300px; left: 104px; top: 470px; background: rgba(225, 200, 2, 0.15); }
+  .glow.b { width: 320px; height: 320px; left: -160px; top: -100px; background: rgba(162, 137, 0, 0.12); }
+
+  h1 { font-size: 84px; }
+
+  .gauge { position: absolute; left: 124px; top: 368px; width: 520px; height: 330px; }
+  .gauge text { font-family: "Instrument Sans"; }
+
+  .evidence {
+    position: absolute;
+    left: 64px; right: 64px; top: 712px;
+    border-radius: 14px;
+    border: 1px solid #3a2f1b;
+    background: linear-gradient(180deg, #1f1910, #17120b);
+    padding: 16px 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  }
+  .evidence .top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+  .evidence .top .sha { font-family: "JetBrains Mono"; color: var(--fg); }
+  .evidence .top .sha span { color: var(--gold); }
+  .chips { display: flex; gap: 8px; margin-top: 14px; }
+  .chip {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: var(--fg);
+    padding: 6px 10px; border-radius: 999px;
+    border: 1px solid #3a2f1b; background: #1c160d;
+    white-space: nowrap;
+  }
+  .chip svg { width: 14px; height: 14px; fill: none; stroke: var(--gold); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+  .rule { position: absolute; left: 64px; right: 64px; top: 842px; font-size: 13.5px; color: var(--dim); line-height: 1.5; }
+  .rule b { color: var(--muted); font-weight: 600; }
+
+  .cta { display: flex; align-items: center; gap: 14px; }
+  .cta .btn {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--gold); color: #1a1400;
+    font-weight: 600; font-size: 15px;
+    padding: 11px 18px; border-radius: 8px;
+    box-shadow: 0 0 30px rgba(225, 200, 2, 0.25);
+  }
+  .cta .btn svg { width: 17px; height: 17px; fill: currentColor; }
+  .cta small { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+
+  <div class="eyebrow">Release Gate</div>
+  <h1>Ship with a<br /><span class="gold">second opinion.</span></h1>
+  <p class="sub">An advisory Go, Conditional Go or No-Go for one exact commit, built on CI, tests and the risks still open.</p>
+</div>
+
+<svg class="gauge" viewBox="0 0 520 330" id="gauge">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b" />
+      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<div class="evidence">
+  <div class="top">
+    <div class="sha"><span>●</span>&nbsp; commit a1b2c3d &nbsp;·&nbsp; main</div>
+    <div>Evidence this verdict rests on</div>
+  </div>
+  <div class="chips">
+    <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>CI passing</div>
+    <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Tests found</div>
+    <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>0 critical risks</div>
+    <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>0 open high</div>
+  </div>
+</div>
+
+<p class="rule"><b>Rules in code cap the AI.</b> Any open critical finding means No-Go. The verdict blocks nothing; you decide when to ship.</p>
+
+<div class="grain"></div>
+
+<div class="footer">
+  <div class="brand">
+    <svg viewBox="0 0 28 28"><rect x="1" y="1" width="26" height="26" rx="4" fill="#412201" stroke="#614501" stroke-width="1"/><rect x="6" y="7" width="16" height="3.4" rx="0.8" fill="#E1C802"/><rect x="6" y="12.3" width="11.5" height="3.4" rx="0.8" fill="#A28900"/><rect x="6" y="17.6" width="7" height="3.4" rx="0.8" fill="#806800"/></svg>
+    Athenyx
+  </div>
+  <div class="cta">
+    <small>Free. No paid API keys.</small>
+    <div class="btn">
+      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      Sign in with GitHub
+    </div>
+  </div>
+</div>
+
+<script>
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("gauge");
+  const cx = 260, cy = 290, r = 230, width = 30;
+  const pt = (deg, rad) => [cx + rad * Math.cos(deg * Math.PI / 180), cy - rad * Math.sin(deg * Math.PI / 180)];
+  const add = (tag, attrs, text) => {
+    const el = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    if (text) el.textContent = text;
+    svg.appendChild(el);
+    return el;
+  };
+  const arc = (from, to, color, extra = {}) => {
+    const [x1, y1] = pt(from, r);
+    const [x2, y2] = pt(to, r);
+    add("path", { d: `M${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}`, fill: "none", stroke: color, "stroke-width": width, ...extra });
+  };
+
+  arc(179, 122, "#3a1d14");
+  arc(118, 62, "#3a2a0e");
+  arc(58, 1, "#e1c802", { filter: "url(#glow)" });
+
+  for (let d = 5; d <= 175; d += 10) {
+    const major = d % 30 === 15;
+    const [x1, y1] = pt(d, r - 34);
+    const [x2, y2] = pt(d, r - (major ? 50 : 42));
+    add("line", { x1, y1, x2, y2, stroke: major ? "#6b5d45" : "#3d3220", "stroke-width": 2, "stroke-linecap": "round" });
+  }
+
+  const label = (deg, text, color, weight = 500) => {
+    const [x, y] = pt(deg, r + 30);
+    add("text", { x, y, fill: color, "font-size": 15, "font-weight": weight, "text-anchor": "middle", "dominant-baseline": "middle" }, text);
+  };
+  label(150, "No-Go", "#a4614f");
+  label(90, "Conditional", "#a8834a");
+  label(30, "Go", "#e1c802", 700);
+
+  add("text", { x: cx - 4, y: cy - 128, fill: "#6b5d45", "font-size": 12, "letter-spacing": "2.2", "text-anchor": "middle", style: "font-family:'JetBrains Mono'" }, "ADVISORY VERDICT");
+  add("text", { x: cx - 4, y: cy - 62, fill: "#f2ede1", "font-size": 76, "font-weight": 800, "text-anchor": "middle", style: "font-family:'Bricolage Grotesque';letter-spacing:-3px" }, "Go");
+
+  const needle = 30, len = 178, base = 7;
+  const [tx, ty] = pt(needle, len);
+  const [lx, ly] = pt(needle + 90, base);
+  const [rx, ry] = pt(needle - 90, base);
+  add("polygon", { points: `${tx},${ty} ${lx},${ly} ${rx},${ry}`, fill: "#f2ede1" });
+  add("rect", { x: cx - 16, y: cy - 16, width: 32, height: 32, rx: 7, fill: "#f2ede1" });
+  add("rect", { x: cx - 7, y: cy - 7, width: 14, height: 14, rx: 3, fill: "#14100a" });
+</script>
+</body>
+</html>

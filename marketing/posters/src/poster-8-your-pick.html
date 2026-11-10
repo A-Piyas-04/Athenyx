@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Three fixes. Your pick.</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--orange); }
+  .rays { --rx: 50%; --ry: 56%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 46px; text-align: center; }
+  .title .a { font-size: 104px; }
+  .title .b { font-size: 124px; margin-top: 6px; display: inline-block; transform: rotate(-2deg); }
+
+  .card {
+    position: absolute;
+    width: 206px; height: 280px;
+    background: #fff;
+    border: 5px solid var(--ink);
+    border-radius: 26px;
+    box-shadow: 8px 10px 0 var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 40px; letter-spacing: -0.03em;
+  }
+  .card img { width: 128px; filter: drop-shadow(4px 5px 0 rgba(26, 18, 6, 0.85)); }
+  .card.mid { background: var(--yellow); z-index: 2; }
+
+  .pop.dev { --w: 170px; --c: var(--sky); left: 40px; top: 790px; }
+
+  .brand { right: 48px; bottom: 50px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="right:0;bottom:0;width:280px;height:240px;-webkit-mask:linear-gradient(-45deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">Three fixes.</div>
+  <div class="b outline">Your pick.</div>
+</div>
+
+<div class="card" style="left:60px;top:430px;transform:rotate(-10deg)"><img src="../assets/turtle.svg" alt="" />Safe</div>
+<div class="card" style="left:502px;top:430px;transform:rotate(10deg)"><img src="../assets/rabbit.svg" alt="" />Fast</div>
+<div class="card mid" style="left:281px;top:392px;transform:scale(1.08)"><img src="../assets/owl.svg" alt="" />Smart</div>
+<img class="emoji" src="../assets/crown.svg" style="left:334px;top:300px;width:100px;z-index:3;transform:rotate(-8deg)" alt="" />
+
+<div class="pop dev"><div class="disc"></div><img src="../assets/developer.svg" alt="" /></div>
+<img class="emoji" src="../assets/thought.svg" style="left:204px;top:760px;width:100px" alt="" />
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 88, count: 30, zones: [[20, 290, 260, 120], [490, 290, 260, 120], [330, 760, 380, 80]] });
+</script>
+</body>
+</html>

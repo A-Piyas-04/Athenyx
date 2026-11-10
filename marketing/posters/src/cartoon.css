@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@500;600;700&display=block");
+
+:root {
+  --ink: #1a1206;
+  --cream: #fff8e6;
+  --yellow: #ffd60a;
+  --gold: #e1c802;
+  --coral: #ff7b5c;
+  --sky: #7cc8ff;
+  --mint: #8ee6b9;
+  --lilac: #c4a8ff;
+  --pink: #ff9ec7;
+  --orange: #ffa94d;
+  --teal: #5fd4d0;
+  --lime: #c6f06b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 768px; height: 1024px; overflow: hidden; }
+
+body {
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  color: var(--ink);
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+.abs { position: absolute; }
+
+.rays {
+  position: absolute;
+  inset: -200px;
+  background: repeating-conic-gradient(from 0deg at var(--rx, 50%) var(--ry, 50%), rgba(255, 255, 255, 0.26) 0 6deg, transparent 6deg 12deg);
+  pointer-events: none;
+}
+
+.dots {
+  position: absolute;
+  background-image: radial-gradient(rgba(26, 18, 6, 0.16) 2.2px, transparent 2.6px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.head {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.outline {
+  color: #fff;
+  -webkit-text-stroke: 10px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 6px 8px 0 var(--ink);
+}
+
+.marker {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+.marker::before {
+  content: "";
+  position: absolute;
+  left: -0.08em; right: -0.08em; top: 0.18em; bottom: 0.02em;
+  background: var(--mk, var(--yellow));
+  border: 4px solid var(--ink);
+  border-radius: 14px;
+  transform: rotate(-2deg);
+  z-index: -1;
+  box-shadow: 5px 6px 0 var(--ink);
+}
+
+.inked {
+  border: 4px solid var(--ink);
+  box-shadow: 6px 7px 0 var(--ink);
+}
+
+/* Fluent emoji busts are cut flat at the bottom; .pop clips the lower half to the disc so the head breaks out of the frame. */
+.pop {
+  position: absolute;
+  width: var(--w);
+  height: calc(var(--w) * 1.16);
+}
+.pop .disc {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: var(--w);
+  height: var(--w);
+  border-radius: 50%;
+  background: var(--c, var(--cream));
+  border: 4px solid var(--ink);
+  box-shadow: 6px 7px 0 var(--ink);
+}
+.pop img {
+  position: absolute;
+  left: calc(var(--w) * -0.06);
+  bottom: 4px;
+  width: calc(var(--w) * 1.12);
+  height: calc(var(--w) * 1.12);
+  -webkit-mask:
+    radial-gradient(circle calc(var(--w) * 0.5 - 4px) at 50% calc(100% - var(--w) * 0.5 + 4px), #000 calc(100% - 1px), transparent 100%),
+    linear-gradient(#000, #000) top / 100% 50% no-repeat;
+  filter: drop-shadow(0 -3px 0 var(--ink)) drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink));
+}
+
+.tag {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%) rotate(var(--r, -3deg));
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 5px 14px 6px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 3px 4px 0 var(--ink);
+  text-align: center;
+  line-height: 1;
+}
+.tag small {
+  display: block;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 3px;
+}
+
+.bubble {
+  position: absolute;
+  background: #fff;
+  border: 4px solid var(--ink);
+  border-radius: 26px;
+  box-shadow: 5px 6px 0 var(--ink);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: grid;
+  place-items: center;
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  width: 26px; height: 26px;
+  background: #fff;
+  border-right: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  left: var(--tx, 30px);
+  bottom: -15px;
+  transform: rotate(var(--tr, 45deg));
+}
+
+.emoji { position: absolute; filter: drop-shadow(5px 6px 0 rgba(26, 18, 6, 0.85)); }
+
+.brand {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+}
+.brand svg { width: 44px; height: 44px; filter: drop-shadow(3px 4px 0 var(--ink)); }
+
+.confetti { position: absolute; pointer-events: none; }

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Ship it. With backup.</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: linear-gradient(180deg, #ffc94d 0%, #ff9a5c 55%, #ff7aa2 100%); }
+  .rays { --rx: 72%; --ry: 36%; }
+
+  .title { position: absolute; left: 48px; top: 44px; }
+  .title .a { font-size: 150px; display: inline-block; transform: rotate(-3deg); }
+  .title .b { font-size: 76px; margin-top: 10px; margin-left: 6px; }
+
+  .puff { position: absolute; border-radius: 50%; background: #fff; border: 4px solid var(--ink); box-shadow: 5px 6px 0 var(--ink); }
+
+  .crowd img { position: absolute; width: 160px; filter: drop-shadow(0 -3px 0 var(--ink)) drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink)); }
+
+  .hill {
+    position: absolute;
+    left: -120px; right: -120px; top: 846px; height: 420px;
+    background: var(--mint);
+    border: 5px solid var(--ink);
+    border-radius: 50% 50% 0 0 / 120px 120px 0 0;
+  }
+
+  .brand { left: 50%; transform: translateX(-50%); bottom: 40px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="right:0;bottom:180px;width:260px;height:260px;-webkit-mask:radial-gradient(#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a outline">Ship it.</div>
+  <div class="b">With backup.</div>
+</div>
+
+<div class="puff" style="left:250px;top:610px;width:84px;height:84px"></div>
+<div class="puff" style="left:190px;top:660px;width:110px;height:110px"></div>
+<div class="puff" style="left:300px;top:650px;width:70px;height:70px"></div>
+<div class="puff" style="left:110px;top:720px;width:130px;height:130px"></div>
+<div class="puff" style="left:40px;top:760px;width:100px;height:100px"></div>
+
+<img class="emoji" src="../assets/fire.svg" style="left:300px;top:540px;width:110px;transform:rotate(-135deg)" alt="" />
+<img class="emoji" src="../assets/rocket.svg" style="left:330px;top:250px;width:370px" alt="" />
+
+<div class="crowd">
+  <img src="../assets/firefighter.svg" style="left:-4px;top:716px;transform:rotate(-6deg)" alt="" />
+  <img src="../assets/architect.svg" style="left:146px;top:700px;transform:rotate(3deg)" alt="" />
+  <img src="../assets/judge.svg" style="left:300px;top:712px" alt="" />
+  <img src="../assets/mechanic.svg" style="left:454px;top:700px;transform:rotate(-3deg)" alt="" />
+  <img src="../assets/teacher.svg" style="left:610px;top:716px;transform:rotate(6deg)" alt="" />
+</div>
+
+<img class="emoji" src="../assets/popper.svg" style="left:20px;top:590px;width:110px;transform:rotate(-10deg)" alt="" />
+<img class="emoji" src="../assets/popper.svg" style="left:640px;top:590px;width:110px;transform:scaleX(-1) rotate(-10deg)" alt="" />
+
+<div class="hill"></div>
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 55, count: 60, zones: [[20, 300, 300, 280], [600, 560, 160, 140], [20, 560, 160, 120], [380, 620, 220, 80]] });
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: They advise. You decide.</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--mint); }
+  .rays { --rx: 50%; --ry: 64%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 46px; text-align: center; }
+  .title .a { font-size: 92px; }
+  .title .b { font-size: 120px; margin-top: 6px; display: inline-block; transform: rotate(-2deg); }
+
+  .pop.dev { --w: 300px; --c: var(--yellow); left: 234px; top: 452px; }
+  .pop.adv { --w: 128px; }
+
+  .bubble.e { width: 92px; height: 80px; }
+  .bubble.e img { width: 54px; }
+
+  .sticker {
+    position: absolute;
+    right: 44px; bottom: 44px;
+    display: flex; align-items: center; gap: 10px;
+    background: #fff;
+    border: 4px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: 5px 6px 0 var(--ink);
+    padding: 8px 20px 8px 10px;
+    font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 22px; letter-spacing: -0.02em;
+    transform: rotate(-3deg);
+  }
+  .sticker img { width: 40px; }
+
+  .brand { left: 48px; bottom: 48px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="left:0;bottom:0;width:300px;height:260px;-webkit-mask:linear-gradient(45deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">They advise.</div>
+  <div class="b outline">You decide.</div>
+</div>
+
+<div class="pop adv" style="--c:var(--lilac);left:44px;top:318px;transform:rotate(-6deg)"><div class="disc"></div><img src="../assets/ninja.svg" alt="" /></div>
+<div class="pop adv" style="--c:var(--sky);left:596px;top:318px;transform:rotate(6deg)"><div class="disc"></div><img src="../assets/scientist.svg" alt="" /></div>
+<div class="pop adv" style="--c:var(--pink);left:34px;top:620px;transform:rotate(5deg)"><div class="disc"></div><img src="../assets/artist.svg" alt="" /></div>
+<div class="pop adv" style="--c:var(--orange);left:606px;top:620px;transform:rotate(-5deg)"><div class="disc"></div><img src="../assets/wizard.svg" alt="" /></div>
+
+<div class="bubble e" style="left:176px;top:318px;--tx:12px;transform:rotate(-6deg)"><img src="../assets/bulb.svg" alt="" /></div>
+<div class="bubble e" style="left:500px;top:318px;--tx:50px;--tr:45deg;transform:rotate(6deg)"><img src="../assets/check.svg" alt="" /></div>
+<div class="bubble e" style="left:120px;top:540px;--tx:12px;transform:rotate(5deg)"><img src="../assets/sparkles.svg" alt="" /></div>
+<div class="bubble e" style="left:556px;top:530px;--tx:50px;transform:rotate(-5deg)"><img src="../assets/thumbsup.svg" alt="" /></div>
+
+<div class="pop dev"><div class="disc"></div><img src="../assets/developer.svg" alt="" /></div>
+<img class="emoji" src="../assets/laptop.svg" style="left:274px;top:690px;width:220px" alt="" />
+
+<div class="brand" data-brand></div>
+<div class="sticker"><img src="../assets/lock.svg" alt="" />Your code stays yours</div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 33, count: 30, zones: [[20, 470, 100, 60], [650, 470, 100, 50], [300, 280, 170, 150], [20, 820, 220, 60]] });
+</script>
+</body>
+</html>

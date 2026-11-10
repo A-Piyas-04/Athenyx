@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Meet your code's dream team</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--yellow); }
+  .rays { --rx: 50%; --ry: 62%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 44px; text-align: center; }
+  .title .a { font-size: 54px; }
+  .title .b { font-size: 112px; margin-top: 8px; transform: rotate(-2deg); display: inline-block; white-space: nowrap; }
+
+  .team { position: absolute; left: 30px; top: 262px; width: 708px; height: 640px; }
+  .team .pop { --w: 158px; }
+  .team .tag { font-size: 15px; line-height: 1.12; padding: 6px 14px 7px; border-radius: 16px; bottom: -22px; }
+
+  .brand { left: 50%; transform: translateX(-50%); bottom: 34px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="left:0;top:0;width:220px;height:200px;-webkit-mask:linear-gradient(135deg,#000,transparent 70%)"></div>
+<div class="dots" style="right:0;bottom:0;width:260px;height:220px;-webkit-mask:linear-gradient(-45deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">Meet your code's</div>
+  <div class="b outline">DREAM TEAM</div>
+</div>
+
+<div class="team" id="team"></div>
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  const CREW = [
+    ["ninja", "Security<br>Adversary", "var(--lilac)"],
+    ["architect", "Architecture<br>Skeptic", "var(--orange)"],
+    ["judge", "Data Integrity<br>Auditor", "var(--sky)"],
+    ["firefighter", "Reliability &amp;<br>Performance Engineer", "var(--coral)"],
+    ["scientist", "Quality &amp;<br>Testing Critic", "var(--mint)"],
+    ["artist", "Product &amp;<br>UX Guardian", "var(--pink)"],
+    ["mechanic", "DevOps &amp;<br>Operations Auditor", "var(--teal)"],
+    ["wizard", "Algorithm &amp;<br>Data Structure Specialist", "var(--lilac)"],
+    ["teacher", "Code Quality &amp;<br>Maintainability Engineer", "var(--lime)"],
+  ];
+  const team = document.getElementById("team");
+  const jitter = [[-4, 6], [3, -6], [-2, 10], [5, 4], [0, -4], [-5, 8], [2, 2], [-3, -8], [4, 6]];
+  CREW.forEach(([img, name, color], i) => {
+    const col = i % 3, row = Math.floor(i / 3);
+    const el = document.createElement("div");
+    el.className = "pop";
+    el.style.setProperty("--c", color);
+    el.style.left = 42 + col * 236 + jitter[i][1] + "px";
+    el.style.top = row * 214 + jitter[i][0] + "px";
+    el.style.transform = `rotate(${jitter[i][0] * 0.6}deg)`;
+    el.innerHTML = `<div class="disc"></div><img src="../assets/${img}.svg" alt="" /><div class="tag" style="--r:${-jitter[i][0] * 0.8}deg">${name}</div>`;
+    team.appendChild(el);
+  });
+
+  confetti({ seed: 7, count: 46, zones: [[0, 300, 40, 600], [728, 300, 40, 600], [40, 920, 200, 60], [530, 920, 200, 60], [30, 222, 708, 30], [0, 0, 120, 36], [650, 0, 118, 36]] });
+</script>
+</body>
+</html>

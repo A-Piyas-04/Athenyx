@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Never forgets a decision</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--lilac); }
+  .rays { --rx: 36%; --ry: 64%; }
+
+  .title { position: absolute; left: 48px; top: 48px; }
+  .title .a { font-size: 108px; display: inline-block; transform: rotate(-2deg); }
+  .title .b { font-size: 104px; margin-top: 8px; }
+
+  .bubble.say { left: 250px; top: 352px; width: 300px; height: 92px; font-size: 34px; --tx: 200px; transform: rotate(-4deg); white-space: nowrap; }
+
+  .brand { left: 50%; transform: translateX(-50%); bottom: 44px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="right:0;top:0;width:280px;height:260px;-webkit-mask:linear-gradient(225deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a outline">Never forgets</div>
+  <div class="b">a decision.</div>
+</div>
+
+<img class="emoji" src="../assets/elephant.svg" style="left:20px;top:420px;width:440px;transform:scaleX(-1)" alt="" />
+<img class="emoji" src="../assets/notebook.svg" style="left:430px;top:560px;width:250px;transform:rotate(10deg)" alt="" />
+<img class="emoji" src="../assets/pencil.svg" style="left:600px;top:500px;width:130px;transform:rotate(-10deg)" alt="" />
+<img class="emoji" src="../assets/check.svg" style="left:520px;top:810px;width:90px;transform:rotate(-8deg)" alt="" />
+
+<div class="bubble say">I remember why.</div>
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 99, count: 28, zones: [[20, 300, 280, 110], [650, 300, 110, 180], [60, 870, 200, 60], [600, 880, 160, 50]] });
+</script>
+</body>
+</html>

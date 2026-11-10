@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: A checkup for your code</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--pink); }
+  .rays { --rx: 64%; --ry: 60%; }
+
+  .title { position: absolute; left: 48px; top: 48px; }
+  .title .a { font-size: 104px; }
+  .title .b { font-size: 100px; margin-top: 6px; display: inline-block; transform: rotate(-2deg); }
+
+  .pop.doc { --w: 300px; --c: var(--mint); left: 28px; top: 560px; }
+  .bubble.say { left: 196px; top: 456px; width: 230px; height: 82px; font-size: 34px; --tx: 40px; transform: rotate(-5deg); }
+
+  .brand { right: 48px; bottom: 44px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="right:0;top:0;width:280px;height:260px;-webkit-mask:linear-gradient(225deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">A checkup</div>
+  <div class="b outline">for your code.</div>
+</div>
+
+<img class="emoji" src="../assets/laptop.svg" style="left:400px;top:430px;width:330px;transform:rotate(6deg)" alt="" />
+<img class="emoji" src="../assets/eyes.svg" style="left:500px;top:470px;width:130px;transform:rotate(6deg)" alt="" />
+<img class="emoji" src="../assets/thermometer.svg" style="left:640px;top:440px;width:100px;transform:rotate(30deg)" alt="" />
+<img class="emoji" src="../assets/bandage.svg" style="left:410px;top:420px;width:96px;transform:rotate(-24deg)" alt="" />
+<img class="emoji" src="../assets/heart.svg" style="left:620px;top:780px;width:90px;transform:rotate(12deg)" alt="" />
+
+<div class="pop doc"><div class="disc"></div><img src="../assets/doctor.svg" alt="" /></div>
+<img class="emoji" src="../assets/stethoscope.svg" style="left:300px;top:690px;width:160px;transform:rotate(-12deg)" alt="" />
+
+<div class="bubble say">Say “aaah!”</div>
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 66, count: 30, zones: [[440, 300, 300, 110], [470, 860, 120, 70], [20, 300, 200, 120]] });
+</script>
+</body>
+</html>

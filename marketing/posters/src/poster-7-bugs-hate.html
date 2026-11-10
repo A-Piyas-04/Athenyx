@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Bugs hate this crew</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--lime); }
+  .rays { --rx: 30%; --ry: 70%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 46px; text-align: center; }
+  .title .a { font-size: 116px; }
+  .title .b { font-size: 124px; margin-top: 6px; display: inline-block; transform: rotate(-2deg); }
+
+  .pop.ninja { --w: 250px; --c: var(--lilac); left: 30px; top: 560px; }
+  .pop.fire { --w: 180px; --c: var(--coral); left: 250px; top: 712px; }
+
+  .bubble.say { left: 150px; top: 452px; width: 210px; height: 80px; font-size: 32px; --tx: 30px; transform: rotate(-4deg); }
+
+  .speed { position: absolute; height: 6px; border-radius: 3px; background: var(--ink); }
+
+  .brand { right: 48px; bottom: 44px; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="left:0;top:0;width:260px;height:240px;-webkit-mask:linear-gradient(135deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">Bugs hate</div>
+  <div class="b outline">this crew.</div>
+</div>
+
+<div class="speed" style="left:420px;top:470px;width:60px"></div>
+<div class="speed" style="left:400px;top:500px;width:90px"></div>
+<div class="speed" style="left:470px;top:650px;width:70px"></div>
+<div class="speed" style="left:450px;top:680px;width:100px"></div>
+<div class="speed" style="left:430px;top:830px;width:70px"></div>
+<div class="speed" style="left:410px;top:860px;width:90px"></div>
+
+<img class="emoji" src="../assets/ladybug.svg" style="left:500px;top:410px;width:150px;transform:rotate(70deg)" alt="" />
+<img class="emoji" src="../assets/bug.svg" style="left:570px;top:590px;width:150px;transform:rotate(20deg)" alt="" />
+<img class="emoji" src="../assets/ant.svg" style="left:520px;top:780px;width:130px;transform:rotate(80deg)" alt="" />
+<img class="emoji" src="../assets/boom.svg" style="left:330px;top:560px;width:140px" alt="" />
+
+<div class="pop ninja"><div class="disc"></div><img src="../assets/ninja.svg" alt="" /></div>
+<div class="pop fire"><div class="disc"></div><img src="../assets/firefighter.svg" alt="" /></div>
+
+<div class="bubble say">Got one!</div>
+
+<div class="brand" data-brand></div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 77, count: 28, zones: [[20, 300, 380, 130], [660, 300, 100, 260], [660, 760, 100, 120]] });
+</script>
+</body>
+</html>

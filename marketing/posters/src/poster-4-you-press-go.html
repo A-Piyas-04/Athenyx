@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Athenyx: Reviews start when you say</title>
+<link rel="stylesheet" href="cartoon.css" />
+<style>
+  body { background: var(--coral); }
+  .rays { --rx: 50%; --ry: 64%; }
+
+  .title { position: absolute; left: 0; right: 0; top: 50px; text-align: center; }
+  .title .a { font-size: 96px; color: #fff; -webkit-text-stroke: 10px var(--ink); paint-order: stroke fill; text-shadow: 6px 8px 0 var(--ink); }
+  .title .b { font-size: 96px; margin-top: 14px; }
+  .title .marker { --mk: var(--yellow); padding: 0 0.16em; margin: 0 0.06em; }
+  .title .marker::before { left: 0; right: 0; top: 0.04em; bottom: -0.1em; }
+
+  .button { position: absolute; left: 154px; top: 560px; width: 460px; height: 320px; overflow: visible; }
+
+  .peek { position: absolute; width: 200px; filter: drop-shadow(0 -3px 0 var(--ink)) drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink)); }
+
+  .ground {
+    position: absolute;
+    left: -20px; right: -20px; top: 844px; bottom: -20px;
+    background: var(--cream);
+    border-top: 5px solid var(--ink);
+  }
+
+  .brand { left: 50%; transform: translateX(-50%); bottom: 80px; }
+  .tagline { position: absolute; left: 0; right: 0; bottom: 40px; text-align: center; font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 22px; letter-spacing: -0.01em; opacity: 0.75; }
+</style>
+</head>
+<body>
+<div class="rays"></div>
+<div class="dots" style="left:0;top:0;width:260px;height:240px;-webkit-mask:linear-gradient(135deg,#000,transparent 70%)"></div>
+
+<div class="title head">
+  <div class="a">Reviews start</div>
+  <div class="b">when <span class="marker">YOU</span> say.</div>
+</div>
+
+<img class="peek" src="../assets/wizard.svg" style="left:20px;top:660px;transform:rotate(-8deg)" alt="" />
+<img class="peek" src="../assets/ninja.svg" style="left:548px;top:660px;transform:rotate(8deg)" alt="" />
+
+<svg class="button" viewBox="0 0 460 320">
+  <g stroke="#1a1206" stroke-width="5" stroke-linejoin="round">
+    <path d="M20 230 V 272 A 210 48 0 0 0 440 272 V 230" fill="#3b2a17" />
+    <ellipse cx="230" cy="230" rx="210" ry="48" fill="#5c4428" />
+    <ellipse cx="230" cy="226" rx="160" ry="34" fill="#2a1d0f" stroke="none" />
+    <path d="M90 118 V 212 A 140 36 0 0 0 370 212 V 118" fill="#f0b400" />
+    <path d="M300 140 V 236 A 140 36 0 0 0 370 212 V 118 Z" fill="#d99a00" stroke="none" />
+    <ellipse cx="230" cy="118" rx="140" ry="36" fill="#ffe14d" />
+  </g>
+  <ellipse cx="180" cy="108" rx="60" ry="12" fill="#fff" opacity="0.6" />
+  <text x="222" y="222" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="54" fill="#1a1206" letter-spacing="-1">GO</text>
+  <g stroke="#1a1206" stroke-width="6" stroke-linecap="round">
+    <path d="M40 70 L 70 92" /><path d="M24 128 L 62 128" /><path d="M420 70 L 390 92" /><path d="M436 128 L 398 128" />
+  </g>
+</svg>
+
+<img class="emoji" src="../assets/hand-down.svg" style="left:306px;top:450px;width:170px;transform:rotate(-6deg)" alt="" />
+<img class="emoji" src="../assets/sparkles.svg" style="left:120px;top:470px;width:90px" alt="" />
+<img class="emoji" src="../assets/sparkles.svg" style="left:560px;top:460px;width:80px;transform:scaleX(-1)" alt="" />
+
+<div class="ground"></div>
+
+<div class="brand" data-brand></div>
+<div class="tagline">No surprise runs. Ever.</div>
+
+<script src="cartoon.js"></script>
+<script>
+  confetti({ seed: 44, count: 28, zones: [[20, 300, 140, 120], [610, 300, 140, 120], [230, 330, 300, 60]] });
+</script>
+</body>
+</html>
