@@ -17,6 +17,7 @@
   .t1 { left: 0; right: 0; text-align: center; }
   .t1 > div { position: static; display: block; }
   .line { display: inline-block !important; transform-origin: 50% 70%; }
+  .white { color: #fff; -webkit-text-stroke: 12px var(--ink); paint-order: stroke fill; text-shadow: 7px 9px 0 var(--ink); }
 
   .pop { transform-origin: 50% 80%; }
   .tag { font-size: 22px; padding: 7px 18px 8px; line-height: 1.1; border-radius: 18px; bottom: -26px; }
@@ -39,10 +40,6 @@
   .shot > img { display: block; width: 100%; }
   .ov { position: absolute; }
 
-  .burst { position: absolute; width: 220px; height: 220px; margin: -110px 0 0 -110px; pointer-events: none; }
-
-  #s7 .brand svg { width: 170px; height: 170px; filter: drop-shadow(7px 9px 0 var(--ink)); }
-
   .sticker {
     position: absolute;
     background: var(--yellow);
@@ -57,36 +54,95 @@
     line-height: 1.02;
   }
 
+  .card {
+    position: absolute;
+    width: 290px; height: 400px;
+    background: #fff;
+    border: 6px solid var(--ink);
+    border-radius: 34px;
+    box-shadow: 11px 13px 0 var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+    font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 58px; letter-spacing: -0.03em;
+    transform-origin: 50% 90%;
+  }
+  .card img { width: 180px; filter: drop-shadow(5px 6px 0 rgba(26, 18, 6, 0.85)); }
+  .card small { font: 700 22px "Instrument Sans"; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin-top: -6px; }
+
+  .runner { position: absolute; left: 0; top: 0; }
+  .speed { position: absolute; height: 9px; border-radius: 5px; background: var(--ink); }
+
+  .pill {
+    display: flex; align-items: center; gap: 20px;
+    background: var(--yellow); border: 6px solid var(--ink); border-radius: 999px;
+    box-shadow: 9px 11px 0 var(--ink);
+    padding: 26px 50px;
+    font: 800 52px "Bricolage Grotesque"; letter-spacing: -0.02em; white-space: nowrap;
+  }
+  .pill svg { width: 58px; height: 58px; fill: var(--ink); }
+
+  #end .brand svg { width: 190px; height: 190px; filter: drop-shadow(7px 9px 0 var(--ink)); }
+
   #wm { left: 50%; bottom: 96px; transform: translateX(-50%); font-size: 40px; }
   #wm svg { width: 56px; height: 56px; }
 </style>
 </head>
 <body>
 
-<!-- S1: hook -->
-<section class="scene" id="s1" style="background:var(--yellow)">
+<!-- HOOK -->
+<section class="scene" id="hook" style="background:var(--lilac)">
+  <div class="vrays"></div>
+  <div class="t1 head a" style="top:200px">
+    <div class="line a" data-in="pop" data-at="0.05" style="font-size:124px">Shipping code</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.3" data-tf="rotate(-2deg)" style="font-size:180px;margin-top:14px">all alone?</div>
+  </div>
+  <div class="pop a" data-in="pop" data-at="0.45" style="--w:440px;--c:var(--yellow);left:320px;top:860px"><div class="disc"></div><img src="../posters/assets/developer.svg" alt="" /></div>
+  <img class="emoji a" data-in="pop" data-at="0.8" src="../posters/assets/sweat.svg" style="left:700px;top:820px;width:140px" alt="" />
+  <img class="emoji a" data-in="pop" data-at="1.0" src="../posters/assets/alarm.svg" style="left:110px;top:780px;width:170px" data-tf="rotate(-12deg)" alt="" />
+  <img class="emoji" data-orbit="0" src="../posters/assets/ladybug.svg" style="position:absolute;width:150px;left:0;top:0" alt="" />
+  <img class="emoji" data-orbit="2.1" src="../posters/assets/bug.svg" style="position:absolute;width:150px;left:0;top:0" alt="" />
+  <img class="emoji" data-orbit="4.2" src="../posters/assets/ant.svg" style="position:absolute;width:130px;left:0;top:0" alt="" />
+</section>
+
+<!-- DREAM TEAM -->
+<section class="scene" id="team" style="background:var(--yellow)">
   <div class="vrays"></div>
   <div class="dots" style="left:0;top:0;width:340px;height:300px;-webkit-mask:linear-gradient(135deg,#000,transparent 70%)"></div>
-  <div class="t1 head a" style="top:190px">
+  <div class="t1 head a" style="top:170px">
     <div class="line a" data-in="pop" data-at="0.1" style="font-size:86px">Meet your code's</div><br />
-    <div class="line outline a" data-in="pop" data-at="0.4" data-tf="rotate(-2deg)" style="font-size:168px;margin-top:14px">DREAM TEAM</div>
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-2deg)" style="font-size:168px;margin-top:14px">DREAM TEAM</div>
   </div>
   <div id="grid"></div>
 </section>
 
-<!-- S2: ask -->
-<section class="scene" id="s2" style="background:var(--coral)">
+<!-- CHECKUP -->
+<section class="scene" id="checkup" style="background:var(--pink)">
   <div class="vrays"></div>
   <div class="t1 head a" style="top:170px">
-    <div class="line a" data-in="pop" data-at="0.15" style="font-size:118px;color:#fff;-webkit-text-stroke:12px var(--ink);paint-order:stroke fill;text-shadow:7px 9px 0 var(--ink)">Ask about</div><br />
+    <div class="line a" data-in="pop" data-at="0.1" style="font-size:132px">A checkup</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-2deg)" style="font-size:136px;margin-top:10px">for your code.</div>
+  </div>
+  <div class="win a" data-in="up" data-at="0.3" style="left:50px;top:580px;width:980px">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <div class="cam"><div class="shot" id="ovshot"><img src="shots/overview.png" alt="" /></div></div>
+  </div>
+  <div class="pop a" data-in="pop" data-at="1.1" style="--w:300px;--c:var(--mint);left:40px;top:1300px"><div class="disc"></div><img src="../posters/assets/doctor.svg" alt="" /></div>
+  <img class="emoji a" data-in="pop" data-at="1.4" src="../posters/assets/stethoscope.svg" style="left:330px;top:1450px;width:200px" data-tf="rotate(-12deg)" alt="" />
+  <div class="bubble a" data-in="pop" data-at="1.7" data-tf="rotate(-4deg)" style="left:560px;top:1440px;width:400px;height:120px;font-size:52px;--tx:40px;white-space:nowrap">Say “aaah!”</div>
+</section>
+
+<!-- ASK -->
+<section class="scene" id="ask" style="background:var(--coral)">
+  <div class="vrays"></div>
+  <div class="t1 head a" style="top:170px">
+    <div class="line white a" data-in="pop" data-at="0.15" style="font-size:118px">Ask about</div><br />
     <div class="line a" data-in="pop" data-at="0.4" style="font-size:118px;margin-top:10px">your <span class="marker" style="padding:0 .16em;margin:0 .04em">code.</span></div>
   </div>
-  <div class="win a" id="labwin" data-in="up" data-at="0.35" style="left:50px;top:580px;width:980px">
+  <div class="win a" data-in="up" data-at="0.35" style="left:50px;top:580px;width:980px">
     <div class="bar"><i></i><i></i><i></i></div>
     <div class="cam">
       <div class="shot" id="labshot">
         <img src="shots/lab.png" alt="" />
-        <div class="ov" id="labcover" style="left:3.6%;top:51%;width:82%;height:4.8%;background:#fff"></div>
+        <div class="ov" style="left:3.6%;top:51%;width:82%;height:4.8%;background:#fff"></div>
         <div class="ov" id="labtype" style="left:4.4%;top:51.2%;font:500 20px 'Instrument Sans';color:#21170a;white-space:nowrap"></div>
         <div class="ov" id="labhint" style="left:24%;top:91.4%;width:22%;height:3.8%;background:#fcfbf8;opacity:0"></div>
         <div class="ov" id="labbtn" style="left:2.73%;top:89.6%;width:19.9%;height:7.2%;background:#e1c802;border-radius:5px;display:grid;place-items:center;font:500 19px 'Instrument Sans';color:#21170a;opacity:0">Start review &nbsp;→</div>
@@ -99,8 +155,8 @@
   <img class="emoji a" data-in="pop" data-at="1.3" src="../posters/assets/thought.svg" style="left:650px;top:1420px;width:120px" alt="" />
 </section>
 
-<!-- S3: the right experts -->
-<section class="scene" id="s3" style="background:var(--sky)">
+<!-- EXPERTS -->
+<section class="scene" id="experts" style="background:var(--sky)">
   <div class="vrays"></div>
   <div class="dots" style="right:0;top:0;width:340px;height:300px;-webkit-mask:linear-gradient(225deg,#000,transparent 70%)"></div>
   <div class="t1 head a" style="top:170px">
@@ -118,8 +174,8 @@
   </div>
 </section>
 
-<!-- S4: no proof, no finding -->
-<section class="scene" id="s4" style="background:var(--mint)">
+<!-- PROOF -->
+<section class="scene" id="proof" style="background:var(--mint)">
   <div class="vrays"></div>
   <div class="t1 head a" style="top:170px">
     <div class="line a" data-in="pop" data-at="0.15" style="font-size:136px">No proof?</div><br />
@@ -141,31 +197,66 @@
   <img class="emoji a" data-in="pop" data-at="1.6" src="../posters/assets/magnifier.svg" style="left:640px;top:1320px;width:300px" data-tf="rotate(10deg)" alt="" />
 </section>
 
-<!-- S5: compare fixes -->
-<section class="scene" id="s5" style="background:var(--orange)">
+<!-- BUGS -->
+<section class="scene" id="bugs" style="background:var(--lime)">
   <div class="vrays"></div>
-  <div class="dots" style="left:0;bottom:0;width:340px;height:300px;-webkit-mask:linear-gradient(45deg,#000,transparent 70%)"></div>
+  <div class="dots" style="left:0;top:0;width:340px;height:300px;-webkit-mask:linear-gradient(135deg,#000,transparent 70%)"></div>
   <div class="t1 head a" style="top:170px">
-    <div class="line a" data-in="pop" data-at="0.15" style="font-size:116px">Compare fixes.</div><br />
-    <div class="line outline a" data-in="pop" data-at="0.4" data-tf="rotate(-2deg)" style="font-size:166px;margin-top:10px">Pick one.</div>
+    <div class="line a" data-in="pop" data-at="0.1" style="font-size:150px">Bugs hate</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-2deg)" style="font-size:160px;margin-top:10px">this crew.</div>
   </div>
-  <div class="win a" id="solwin" data-in="up" data-at="0.3" style="left:50px;top:600px;width:980px">
+  <div class="runner" data-y="760" data-speed="260"><div class="speed" style="left:-110px;top:60px;width:80px"></div><div class="speed" style="left:-140px;top:100px;width:110px"></div><img class="emoji" src="../posters/assets/ladybug.svg" style="position:absolute;width:190px;transform:rotate(80deg)" alt="" /></div>
+  <div class="runner" data-y="1040" data-speed="320"><div class="speed" style="left:-110px;top:60px;width:80px"></div><div class="speed" style="left:-140px;top:100px;width:110px"></div><img class="emoji" src="../posters/assets/bug.svg" style="position:absolute;width:190px;transform:rotate(20deg)" alt="" /></div>
+  <div class="runner" data-y="1320" data-speed="230"><div class="speed" style="left:-110px;top:50px;width:80px"></div><div class="speed" style="left:-140px;top:90px;width:110px"></div><img class="emoji" src="../posters/assets/ant.svg" style="position:absolute;width:170px;transform:rotate(85deg)" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="0.5" style="--w:340px;--c:var(--lilac);left:30px;top:860px"><div class="disc"></div><img src="../posters/assets/ninja.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="0.7" style="--w:250px;--c:var(--coral);left:300px;top:1240px"><div class="disc"></div><img src="../posters/assets/firefighter.svg" alt="" /></div>
+  <img class="emoji a" data-in="pop" data-at="1.5" src="../posters/assets/boom.svg" style="left:360px;top:820px;width:200px" alt="" />
+  <div class="bubble a" data-in="pop" data-at="1.8" data-tf="rotate(-4deg)" style="left:120px;top:680px;width:320px;height:110px;font-size:52px;--tx:40px">Got one!</div>
+</section>
+
+<!-- PICK -->
+<section class="scene" id="pick" style="background:var(--orange)">
+  <div class="vrays"></div>
+  <div class="dots" style="right:0;bottom:0;width:340px;height:300px;-webkit-mask:linear-gradient(-45deg,#000,transparent 70%)"></div>
+  <div class="t1 head a" style="top:170px">
+    <div class="line a" data-in="pop" data-at="0.1" style="font-size:130px">Three fixes.</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-2deg)" style="font-size:170px;margin-top:10px">Your pick.</div>
+  </div>
+  <div class="card" id="cardL" style="left:56px;top:680px"><img src="../posters/assets/turtle.svg" alt="" />Safe<small>Low risk</small></div>
+  <div class="card" id="cardR" style="left:734px;top:680px"><img src="../posters/assets/rabbit.svg" alt="" />Fast<small>Quick win</small></div>
+  <div class="card" id="cardM" style="left:395px;top:640px;z-index:2"><img src="../posters/assets/owl.svg" alt="" />Smart<small>Recommended</small></div>
+  <img class="emoji" id="crown" src="../posters/assets/crown.svg" style="position:absolute;left:470px;top:500px;width:140px;z-index:3;opacity:0" alt="" />
+  <img class="emoji" id="pickhand" src="../posters/assets/hand-down.svg" style="position:absolute;left:470px;top:760px;width:200px;z-index:4;opacity:0" alt="" />
+  <img class="emoji" id="pickcheck" src="../posters/assets/check.svg" style="position:absolute;left:600px;top:960px;width:140px;z-index:4;opacity:0" alt="" />
+  <div class="pop a" data-in="pop" data-at="1.2" style="--w:260px;--c:var(--sky);left:70px;top:1260px"><div class="disc"></div><img src="../posters/assets/developer.svg" alt="" /></div>
+  <img class="emoji a" data-in="pop" data-at="1.5" src="../posters/assets/thought.svg" style="left:330px;top:1240px;width:130px" alt="" />
+  <img class="emoji a" data-in="pop" data-at="3.3" src="../posters/assets/popper.svg" style="left:760px;top:1260px;width:220px" data-tf="scaleX(-1)" alt="" />
+</section>
+
+<!-- LEDGER -->
+<section class="scene" id="ledger" style="background:var(--lilac)">
+  <div class="vrays"></div>
+  <div class="t1 head a" style="top:170px">
+    <div class="line outline a" data-in="pop" data-at="0.1" data-tf="rotate(-2deg)" style="font-size:140px">Never forgets</div><br />
+    <div class="line a" data-in="pop" data-at="0.35" style="font-size:130px;margin-top:10px">a decision.</div>
+  </div>
+  <div class="win a" data-in="up" data-at="0.3" style="left:50px;top:600px;width:980px">
     <div class="bar"><i></i><i></i><i></i></div>
     <div class="cam">
-      <div class="shot" id="solshot">
-        <img src="shots/solutions.png" alt="" />
-        <img class="ov emoji" id="solhand" src="../posters/assets/hand-down.svg" style="width:150px;left:44px;top:320px;opacity:0" alt="" />
-        <img class="ov emoji" id="solcheck" src="../posters/assets/check.svg" style="width:120px;left:230px;top:400px;opacity:0" alt="" />
+      <div class="shot">
+        <img src="shots/decisions.png" alt="" />
+        <div class="ov" id="ledband" style="left:0;top:63%;height:17.7%;width:0;background:rgba(225,200,2,.4);mix-blend-mode:multiply"></div>
       </div>
     </div>
   </div>
-  <div class="pop a" data-in="pop" data-at="1.0" style="--w:280px;--c:var(--lime);left:80px;top:1300px"><div class="disc"></div><img src="../posters/assets/architect.svg" alt="" /></div>
-  <img class="emoji a" data-in="pop" data-at="3.0" src="../posters/assets/thumbsup.svg" style="left:400px;top:1360px;width:170px" data-tf="rotate(-10deg)" alt="" />
-  <img class="emoji a" data-in="pop" data-at="3.15" src="../posters/assets/popper.svg" style="left:740px;top:1330px;width:200px" data-tf="scaleX(-1)" alt="" />
+  <img class="emoji a" data-in="pop" data-at="0.9" src="../posters/assets/elephant.svg" style="left:20px;top:1170px;width:440px" data-tf="scaleX(-1)" alt="" />
+  <div class="bubble a" data-in="pop" data-at="1.3" data-tf="rotate(-4deg)" style="left:420px;top:1170px;width:470px;height:120px;font-size:52px;--tx:60px;white-space:nowrap">I remember why.</div>
+  <img class="emoji a" data-in="pop" data-at="1.7" src="../posters/assets/notebook.svg" style="left:700px;top:1360px;width:250px" data-tf="rotate(10deg)" alt="" />
+  <img class="emoji a" data-in="pop" data-at="2.6" src="../posters/assets/check.svg" style="left:560px;top:1460px;width:120px" data-tf="rotate(-8deg)" alt="" />
 </section>
 
-<!-- S6: safe to ship -->
-<section class="scene" id="s6" style="background:linear-gradient(180deg,#ffc94d 0%,#ff9a5c 55%,#ff7aa2 100%)">
+<!-- SHIP -->
+<section class="scene" id="ship" style="background:linear-gradient(180deg,#ffc94d 0%,#ff9a5c 55%,#ff7aa2 100%)">
   <div class="vrays"></div>
   <div class="t1 head a" style="top:170px">
     <div class="line a" data-in="pop" data-at="0.15" style="font-size:110px">Know when it's</div><br />
@@ -181,19 +272,62 @@
   <img class="emoji" id="rocket" src="../posters/assets/rocket.svg" style="position:absolute;width:300px;left:0;top:0" alt="" />
 </section>
 
-<!-- S7: end card -->
-<section class="scene" id="s7" style="background:var(--teal)">
+<!-- DECIDE -->
+<section class="scene" id="decide" style="background:var(--mint)">
+  <div class="vrays"></div>
+  <div class="t1 head a" style="top:170px">
+    <div class="line a" data-in="pop" data-at="0.1" style="font-size:128px">They advise.</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-2deg)" style="font-size:166px;margin-top:10px">You decide.</div>
+  </div>
+  <div class="pop a" data-in="pop" data-at="0.6" data-tf="rotate(-6deg)" style="--w:180px;--c:var(--lilac);left:60px;top:620px"><div class="disc"></div><img src="../posters/assets/ninja.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="0.75" data-tf="rotate(6deg)" style="--w:180px;--c:var(--sky);left:840px;top:620px"><div class="disc"></div><img src="../posters/assets/scientist.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="0.9" data-tf="rotate(5deg)" style="--w:180px;--c:var(--pink);left:50px;top:1080px"><div class="disc"></div><img src="../posters/assets/artist.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="1.05" data-tf="rotate(-5deg)" style="--w:180px;--c:var(--orange);left:850px;top:1080px"><div class="disc"></div><img src="../posters/assets/wizard.svg" alt="" /></div>
+  <div class="bubble a" data-in="pop" data-at="1.3" data-tf="rotate(-6deg)" style="left:250px;top:600px;width:130px;height:112px;--tx:16px"><img src="../posters/assets/bulb.svg" style="width:76px" alt="" /></div>
+  <div class="bubble a" data-in="pop" data-at="1.45" data-tf="rotate(6deg)" style="left:700px;top:600px;width:130px;height:112px;--tx:76px"><img src="../posters/assets/check.svg" style="width:76px" alt="" /></div>
+  <div class="bubble a" data-in="pop" data-at="1.6" data-tf="rotate(5deg)" style="left:240px;top:990px;width:130px;height:112px;--tx:16px"><img src="../posters/assets/sparkles.svg" style="width:76px" alt="" /></div>
+  <div class="bubble a" data-in="pop" data-at="1.75" data-tf="rotate(-5deg)" style="left:710px;top:990px;width:130px;height:112px;--tx:76px"><img src="../posters/assets/thumbsup.svg" style="width:76px" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="0.4" style="--w:400px;--c:var(--yellow);left:340px;top:820px"><div class="disc"></div><img src="../posters/assets/developer.svg" alt="" /></div>
+  <img class="emoji a" data-in="up" data-at="0.6" src="../posters/assets/laptop.svg" style="left:390px;top:1130px;width:300px" alt="" />
+  <div class="a" data-in="pop" data-at="2.3" data-tf="rotate(-3deg)" style="left:0;right:0;top:1470px;display:flex;justify-content:center">
+    <div style="display:flex;align-items:center;gap:16px;background:#fff;border:6px solid var(--ink);border-radius:999px;box-shadow:8px 10px 0 var(--ink);padding:16px 36px 16px 18px;font:800 46px 'Bricolage Grotesque';letter-spacing:-.02em"><img src="../posters/assets/lock.svg" style="width:70px" alt="" />Your code stays yours</div>
+  </div>
+</section>
+
+<!-- FREE -->
+<section class="scene" id="free" style="background:var(--teal)">
   <div class="vrays"></div>
   <div class="dots" style="left:0;bottom:0;width:340px;height:300px;-webkit-mask:linear-gradient(45deg,#000,transparent 70%)"></div>
-  <div class="brand a" data-brand data-in="pop" data-at="0.2" style="left:0;right:0;top:420px;justify-content:center;font-size:150px;gap:34px"></div>
-  <div class="t1 head a" data-in="pop" data-at="0.6" style="top:700px;font-size:84px">Your code's dream team.</div>
-  <div class="a" data-in="pop" data-at="1.0" style="left:0;right:0;top:880px;display:flex;justify-content:center">
-    <div style="display:flex;align-items:center;gap:20px;background:var(--yellow);border:6px solid var(--ink);border-radius:999px;box-shadow:9px 11px 0 var(--ink);padding:26px 50px;font:800 52px 'Bricolage Grotesque';letter-spacing:-.02em;transform:rotate(-2deg)">
-      <svg viewBox="0 0 24 24" style="width:58px;height:58px;fill:var(--ink)"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+  <div class="t1 head a" style="top:150px">
+    <div class="line a" data-in="pop" data-at="0.1" style="font-size:100px">Your dream team is</div><br />
+    <div class="line outline a" data-in="pop" data-at="0.35" data-tf="rotate(-3deg)" style="font-size:250px;margin-top:6px">FREE.</div>
+  </div>
+  <svg class="a" data-in="pop" data-at="0.75" data-tf="rotate(12deg)" viewBox="0 0 160 160" style="left:820px;top:370px;width:230px;height:230px">
+    <polygon id="star" fill="#ffd60a" stroke="#1a1206" stroke-width="5" stroke-linejoin="round" />
+    <text x="80" y="98" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="56" fill="#1a1206" letter-spacing="-2">$0</text>
+  </svg>
+  <div class="pop a" data-in="pop" data-at="0.9" data-tf="rotate(-6deg)" data-bob="5" style="--w:180px;--c:var(--lilac);left:20px;top:780px"><div class="disc"></div><img src="../posters/assets/ninja.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="1.0" data-tf="rotate(-3deg)" data-bob="5" style="--w:180px;--c:var(--sky);left:225px;top:740px"><div class="disc"></div><img src="../posters/assets/judge.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="1.1" data-bob="5" style="--w:180px;--c:var(--mint);left:450px;top:720px"><div class="disc"></div><img src="../posters/assets/scientist.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="1.2" data-tf="rotate(3deg)" data-bob="5" style="--w:180px;--c:var(--pink);left:675px;top:740px"><div class="disc"></div><img src="../posters/assets/artist.svg" alt="" /></div>
+  <div class="pop a" data-in="pop" data-at="1.3" data-tf="rotate(6deg)" data-bob="5" style="--w:180px;--c:var(--orange);left:880px;top:780px"><div class="disc"></div><img src="../posters/assets/wizard.svg" alt="" /></div>
+  <img class="emoji a" id="wave1" data-in="pop" data-at="1.4" src="../posters/assets/wave.svg" style="left:160px;top:640px;width:120px" alt="" />
+  <img class="emoji a" id="wave2" data-in="pop" data-at="1.5" src="../posters/assets/wave.svg" style="left:800px;top:630px;width:120px" data-tf="scaleX(-1)" alt="" />
+  <img class="emoji a" data-in="pop" data-at="1.7" src="../posters/assets/gift.svg" style="left:50px;top:1130px;width:190px" data-tf="rotate(-10deg)" alt="" />
+  <img class="emoji a" data-in="pop" data-at="1.8" src="../posters/assets/popper.svg" style="left:850px;top:1130px;width:190px" data-tf="scaleX(-1)" alt="" />
+  <div class="a" id="cta" data-in="pop" data-at="2.0" style="left:0;right:0;top:1200px;display:flex;justify-content:center">
+    <div class="pill" style="transform:rotate(-2deg)">
+      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       Sign in with GitHub
     </div>
   </div>
-  <div class="t1 a" data-in="fade" data-at="1.4" style="top:1060px;font:700 40px 'Bricolage Grotesque';opacity:.85">Free to start. No paid API keys needed.</div>
+</section>
+
+<!-- END -->
+<section class="scene" id="end" style="background:var(--yellow)">
+  <div class="vrays"></div>
+  <div class="brand a" data-brand data-in="pop" data-at="0.15" style="left:0;right:0;top:560px;justify-content:center;font-size:170px;gap:36px"></div>
+  <div class="t1 head a" data-in="pop" data-at="0.55" style="top:860px;font-size:86px">Your code's dream team.</div>
   <div id="crew"></div>
 </section>
 
@@ -204,15 +338,21 @@
   const FPS = 30;
   const WIPE = 0.45;
   const SCENES = [
-    { id: "s1", start: 0 },
-    { id: "s2", start: 3.6 },
-    { id: "s3", start: 8.4 },
-    { id: "s4", start: 13.2 },
-    { id: "s5", start: 17.8 },
-    { id: "s6", start: 22.2 },
-    { id: "s7", start: 26.6 },
+    { id: "hook", start: 0 },
+    { id: "team", start: 3.0, at: "50% 50%" },
+    { id: "checkup", start: 9.4, at: "15% 85%" },
+    { id: "ask", start: 14.2, at: "85% 20%" },
+    { id: "experts", start: 19.0, at: "15% 30%" },
+    { id: "proof", start: 23.8, at: "85% 80%" },
+    { id: "bugs", start: 28.4, at: "50% 55%" },
+    { id: "pick", start: 32.4, at: "15% 85%" },
+    { id: "ledger", start: 37.4, at: "85% 20%" },
+    { id: "ship", start: 42.2, at: "50% 90%" },
+    { id: "decide", start: 46.8, at: "15% 30%" },
+    { id: "free", start: 51.2, at: "50% 55%" },
+    { id: "end", start: 55.8, at: "50% 50%" },
   ];
-  const DURATION = 31;
+  const DURATION = 59.4;
   window.VIDEO = { FPS, DURATION };
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -220,29 +360,42 @@
   const cubicOut = (p) => 1 - Math.pow(1 - p, 3);
   const cubicInOut = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
   const backOut = (p) => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+  const popScale = (p) => (p > 0 ? backOut(p) : 0);
 
-  // Scene 1 grid of all nine specialists.
   const CREW = [
-    ["ninja", "var(--lilac)"], ["architect", "var(--orange)"], ["judge", "var(--sky)"],
-    ["firefighter", "var(--coral)"], ["scientist", "var(--mint)"], ["artist", "var(--pink)"],
-    ["mechanic", "var(--teal)"], ["wizard", "var(--lilac)"], ["teacher", "var(--lime)"],
+    ["ninja", "var(--lilac)", "Security<br>Adversary"],
+    ["architect", "var(--orange)", "Architecture<br>Skeptic"],
+    ["judge", "var(--sky)", "Data Integrity<br>Auditor"],
+    ["firefighter", "var(--coral)", "Reliability &amp;<br>Performance Engineer"],
+    ["scientist", "var(--mint)", "Quality &amp;<br>Testing Critic"],
+    ["artist", "var(--pink)", "Product &amp;<br>UX Guardian"],
+    ["mechanic", "var(--teal)", "DevOps &amp;<br>Operations Auditor"],
+    ["wizard", "var(--lilac)", "Algorithm &amp;<br>Data Structure Specialist"],
+    ["teacher", "var(--lime)", "Code Quality &amp;<br>Maintainability Engineer"],
   ];
   const grid = document.getElementById("grid");
-  CREW.forEach(([img, c], i) => {
+  CREW.forEach(([img, c, name], i) => {
     const col = i % 3, row = Math.floor(i / 3);
-    const tilt = [-4, 3, -2, 5, 0, -5, 2, -3, 4][i];
+    const tilt = [-3, 2, -2, 3, 0, -3, 2, -2, 3][i];
+    const at = 0.7 + i * 0.18;
     grid.insertAdjacentHTML("beforeend",
-      `<div class="pop a" data-in="pop" data-at="${0.75 + i * 0.12}" data-tf="rotate(${tilt}deg)" data-bob="5" style="--w:240px;--c:${c};left:${90 + col * 330}px;top:${640 + row * 320}px"><div class="disc"></div><img src="../posters/assets/${img}.svg" alt="" /></div>`);
+      `<div class="pop a" data-in="pop" data-at="${at}" data-tf="rotate(${tilt}deg)" data-bob="4" style="--w:228px;--c:${c};left:${96 + col * 330}px;top:${590 + row * 352}px"><div class="disc"></div><img src="../posters/assets/${img}.svg" alt="" /><div class="tag a" data-in="pop" data-at="${at + 0.2}" data-tf="translateX(-50%) rotate(${-tilt}deg)" style="left:50%">${name}</div></div>`);
   });
 
-  // End card mini crew.
   const crew = document.getElementById("crew");
   CREW.forEach(([img, c], i) => {
     crew.insertAdjacentHTML("beforeend",
-      `<div class="pop a" data-in="pop" data-at="${1.6 + i * 0.08}" data-bob="4" style="--w:100px;--c:${c};left:${62 + i * 108}px;top:1290px"><div class="disc"></div><img src="../posters/assets/${img}.svg" alt="" /></div>`);
+      `<div class="pop a" data-in="pop" data-at="${0.9 + i * 0.08}" data-bob="4" style="--w:100px;--c:${c};left:${62 + i * 108}px;top:1120px"><div class="disc"></div><img src="../posters/assets/${img}.svg" alt="" /></div>`);
   });
 
-  // Scene 6 smoke puffs along the rocket path.
+  const pts = [];
+  for (let i = 0; i < 24; i++) {
+    const ang = (i * Math.PI) / 12 - Math.PI / 2;
+    const r = i % 2 ? 58 : 76;
+    pts.push(`${80 + r * Math.cos(ang)},${80 + r * Math.sin(ang)}`);
+  }
+  document.getElementById("star").setAttribute("points", pts.join(" "));
+
   const PUFFS = [0.12, 0.2, 0.28, 0.36, 0.44, 0.52, 0.6];
   const rocketPath = (u) => ({ x: -260 + u * 1480, y: 1640 - u * 760 - Math.sin(u * Math.PI) * 140 });
   const puffs = document.getElementById("puffs");
@@ -253,7 +406,6 @@
       `<div class="puff" data-u="${u}" style="position:absolute;left:${x + 40}px;top:${y + 190}px;width:${s}px;height:${s}px;border-radius:50%;background:#fff;border:5px solid var(--ink);box-shadow:6px 7px 0 var(--ink);transform:scale(0)"></div>`);
   });
 
-  // Confetti, seeded so every render is identical.
   function scatter(sceneId, seed, count, zones) {
     const root = document.getElementById(sceneId);
     const rand = seeded(seed);
@@ -272,65 +424,111 @@
         `<svg class="conf" data-spin="${(rand() - 0.5) * 120}" data-rot="${rand() * 360}" data-fall="${10 + rand() * 30}" width="${s}" height="${s}" viewBox="0 0 20 20" style="position:absolute;left:${zx + rand() * zw}px;top:${zy + rand() * zh}px">${shape}</svg>`);
     }
   }
-  scatter("s1", 3, 40, [[20, 30, 200, 140], [860, 30, 200, 140], [20, 560, 60, 900], [1000, 560, 60, 900]]);
-  scatter("s2", 5, 26, [[20, 470, 1040, 90], [40, 1440, 600, 180]]);
-  scatter("s3", 7, 28, [[20, 30, 200, 120], [860, 30, 200, 120], [40, 1400, 1000, 260]]);
-  scatter("s4", 9, 24, [[20, 30, 200, 120], [860, 30, 200, 120], [500, 1520, 500, 140]]);
-  scatter("s5", 11, 28, [[20, 470, 1040, 110], [560, 1520, 480, 120]]);
-  scatter("s6", 13, 40, [[20, 30, 1040, 120], [40, 1000, 1000, 340]]);
-  scatter("s7", 15, 50, [[20, 60, 1040, 300], [20, 1440, 1040, 300]]);
+  const TOP = [[20, 30, 220, 130], [840, 30, 220, 130]];
+  scatter("hook", 1, 24, [...TOP, [40, 1500, 1000, 200]]);
+  scatter("team", 3, 30, [...TOP, [20, 560, 50, 1000], [1010, 560, 50, 1000]]);
+  scatter("checkup", 4, 26, [...TOP, [20, 470, 1040, 90]]);
+  scatter("ask", 5, 26, [[20, 470, 1040, 90], [40, 1440, 600, 180]]);
+  scatter("experts", 7, 28, [...TOP, [40, 1500, 1000, 200]]);
+  scatter("proof", 9, 24, [...TOP, [500, 1520, 500, 140]]);
+  scatter("bugs", 10, 24, [...TOP, [700, 1500, 340, 200]]);
+  scatter("pick", 11, 36, [...TOP, [20, 470, 1040, 120], [400, 1150, 600, 120]]);
+  scatter("ledger", 12, 26, [...TOP, [20, 1600, 1040, 120]]);
+  scatter("ship", 13, 40, [[20, 30, 1040, 120], [40, 1000, 1000, 340]]);
+  scatter("decide", 14, 26, [...TOP, [360, 640, 360, 140]]);
+  scatter("free", 15, 50, [...TOP, [20, 600, 1040, 100], [260, 1080, 560, 100], [20, 1400, 1040, 300]]);
+  scatter("end", 16, 60, [[20, 60, 1040, 420], [20, 1280, 1040, 420]]);
+
+  function press(lt, from, down) {
+    const ph = cubicOut(prog(lt, from, 0.5));
+    const dip = lt > down && lt < down + 0.3 ? 20 : 0;
+    return { opacity: ph, transform: `translateY(${(1 - ph) * -280 + dip}px) rotate(-6deg)` };
+  }
 
   const FX = {
-    s2(lt) {
+    hook(lt, root) {
+      root.querySelectorAll("[data-orbit]").forEach((b) => {
+        const ph = +b.dataset.orbit + lt * 1.6;
+        const x = 540 + Math.cos(ph) * 400 - 75;
+        const y = 1120 + Math.sin(ph) * 330 - 75;
+        const deg = (ph * 180) / Math.PI + 180;
+        b.style.opacity = lt > 0.6 ? 1 : 0;
+        b.style.transform = `translate(${x}px, ${y}px) rotate(${deg}deg)`;
+      });
+    },
+    checkup(lt) {
+      const zoom = 1 + 0.08 * cubicInOut(prog(lt, 0.6, 3.6));
+      document.getElementById("ovshot").style.transform = `scale(${zoom})`;
+    },
+    ask(lt) {
       const q = "Where is authorization checked?";
       const n = Math.floor(clamp((lt - 1.0) / 1.4) * q.length);
       const caret = lt > 0.9 && lt < 2.8 && Math.floor(lt * 3) % 2 === 0 ? "|" : "";
       document.getElementById("labtype").textContent = q.slice(0, n) + caret;
       document.getElementById("labhint").style.opacity = lt > 2.45 ? 1 : 0;
-      const pb = prog(lt, 2.5, 0.3);
-      const press = lt > 3.25 && lt < 3.45 ? 0.92 : 1;
       const btn = document.getElementById("labbtn");
-      btn.style.opacity = pb;
-      btn.style.transform = `scale(${press})`;
-      const hand = document.getElementById("labhand");
-      const ph = cubicOut(prog(lt, 2.7, 0.5));
-      const dip = lt > 3.2 && lt < 3.5 ? 18 : 0;
-      hand.style.opacity = ph;
-      hand.style.transform = `translateY(${(1 - ph) * -260 + dip}px) rotate(-6deg)`;
+      btn.style.opacity = prog(lt, 2.5, 0.3);
+      btn.style.transform = `scale(${lt > 3.25 && lt < 3.45 ? 0.92 : 1})`;
+      Object.assign(document.getElementById("labhand").style, press(lt, 2.7, 3.2));
       const sp = prog(lt, 3.3, 0.35);
       const spark = document.getElementById("labspark");
       spark.style.opacity = sp > 0 ? 1 : 0;
-      spark.style.transform = `scale(${sp > 0 ? backOut(sp) : 0}) rotate(${sp * 20}deg)`;
-      const zoom = 1 + 0.22 * cubicInOut(prog(lt, 1.0, 2.0));
+      spark.style.transform = `scale(${popScale(sp)}) rotate(${sp * 20}deg)`;
       const shot = document.getElementById("labshot");
       shot.style.transformOrigin = "15% 85%";
-      shot.style.transform = `scale(${zoom})`;
+      shot.style.transform = `scale(${1 + 0.22 * cubicInOut(prog(lt, 1.0, 2.0))})`;
     },
-    s3(lt) {
+    experts(lt) {
       const pan = cubicInOut(prog(lt, 1.6, 2.8));
       document.getElementById("boardshot").style.transform = `translateX(${-pan * (2320 - 988)}px)`;
     },
-    s4(lt) {
+    proof(lt) {
       document.getElementById("findband").style.width = 88 * cubicOut(prog(lt, 1.5, 0.5)) + "%";
-      const path = document.querySelector("#findscribble path");
-      path.style.strokeDashoffset = 1 - cubicOut(prog(lt, 2.1, 0.6));
-      const zoom = 1 + 0.3 * cubicInOut(prog(lt, 1.2, 1.4));
+      document.querySelector("#findscribble path").style.strokeDashoffset = 1 - cubicOut(prog(lt, 2.1, 0.6));
       const shot = document.getElementById("findshot");
       shot.style.transformOrigin = "0% 72%";
-      shot.style.transform = `scale(${zoom})`;
+      shot.style.transform = `scale(${1 + 0.3 * cubicInOut(prog(lt, 1.2, 1.4))})`;
     },
-    s5(lt) {
-      const hand = document.getElementById("solhand");
-      const ph = cubicOut(prog(lt, 1.6, 0.5));
-      const dip = lt > 2.2 && lt < 2.5 ? 18 : 0;
-      hand.style.opacity = ph;
-      hand.style.transform = `translateY(${(1 - ph) * -260 + dip}px) rotate(-6deg)`;
-      const cp = prog(lt, 2.35, 0.4);
-      const check = document.getElementById("solcheck");
-      check.style.opacity = cp > 0 ? 1 : 0;
-      check.style.transform = `scale(${cp > 0 ? backOut(cp) : 0}) rotate(-8deg)`;
+    bugs(lt, root) {
+      root.querySelectorAll(".runner").forEach((r, i) => {
+        const go = Math.max(0, lt - 0.9);
+        const x = 560 + go * go * +r.dataset.speed * 0.55 + i * 30;
+        const wobble = Math.sin(lt * 18 + i) * 6;
+        r.style.transform = `translate(${x}px, ${+r.dataset.y + wobble}px)`;
+        r.querySelectorAll(".speed").forEach((s) => (s.style.opacity = lt > 0.9 ? 1 : 0));
+      });
     },
-    s6(lt) {
+    pick(lt) {
+      const cards = [["cardL", 0.6, -10], ["cardM", 0.8, 0], ["cardR", 1.0, 10]];
+      const chosen = cubicOut(prog(lt, 2.7, 0.4));
+      cards.forEach(([id, at, tilt]) => {
+        const el = document.getElementById(id);
+        const s = popScale(prog(lt, at, 0.5));
+        if (id === "cardM") {
+          const dip = lt > 2.5 && lt < 2.7 ? 0.95 : 1;
+          el.style.transform = `translateY(${-40 * chosen}px) scale(${s * (1 + 0.1 * chosen) * dip})`;
+          el.style.background = chosen > 0 ? "var(--yellow)" : "#fff";
+        } else {
+          el.style.transform = `rotate(${tilt * (1 + 0.5 * chosen)}deg) scale(${s * (1 - 0.08 * chosen)})`;
+          el.style.opacity = 1 - 0.45 * chosen;
+        }
+      });
+      Object.assign(document.getElementById("pickhand").style, press(lt, 1.9, 2.45));
+      const hand = document.getElementById("pickhand");
+      if (lt > 2.9) hand.style.opacity = 1 - prog(lt, 2.9, 0.3);
+      const cr = prog(lt, 2.9, 0.5);
+      const crown = document.getElementById("crown");
+      crown.style.opacity = cr > 0 ? 1 : 0;
+      crown.style.transform = `translateY(${(1 - cubicOut(cr)) * -300 - 40 * chosen}px) rotate(${-8 + Math.sin(cr * 6) * 6 * (1 - cr)}deg)`;
+      const ck = prog(lt, 3.1, 0.4);
+      const check = document.getElementById("pickcheck");
+      check.style.opacity = ck > 0 ? 1 : 0;
+      check.style.transform = `scale(${popScale(ck)}) rotate(-8deg)`;
+    },
+    ledger(lt) {
+      document.getElementById("ledband").style.width = 100 * cubicOut(prog(lt, 2.0, 0.6)) + "%";
+    },
+    ship(lt) {
       const u = cubicInOut(prog(lt, 1.2, 2.6));
       const { x, y } = rocketPath(u);
       const rocket = document.getElementById("rocket");
@@ -343,21 +541,28 @@
         p.style.transform = `scale(${k > 0 ? backOut(k) * fade : 0})`;
       });
     },
+    free(lt) {
+      ["wave1", "wave2"].forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (prog(lt, 1.4 + i * 0.1, 0.5) >= 1) el.style.transform += ` rotate(${Math.sin(lt * 9) * 14}deg)`;
+      });
+      const cta = document.getElementById("cta");
+      if (prog(lt, 2.0, 0.5) >= 1) cta.style.transform = `scale(${1 + 0.035 * Math.sin((lt - 2.5) * 6)})`;
+    },
   };
 
   function animate(root, lt) {
     root.querySelectorAll(".a[data-in]").forEach((el) => {
       const at = +el.dataset.at || 0;
-      const dur = +el.dataset.dur || 0.5;
-      const p = prog(lt, at, dur);
+      const p = prog(lt, at, +el.dataset.dur || 0.5);
       let tf = "", op = 1;
       switch (el.dataset.in) {
-        case "pop": tf = `scale(${p > 0 ? backOut(p) : 0})`; op = p > 0 ? 1 : 0; break;
+        case "pop": tf = `scale(${popScale(p)})`; op = p > 0 ? 1 : 0; break;
         case "up": { const e = cubicOut(p); tf = `translateY(${(1 - e) * 220}px)`; op = clamp(e * 2); break; }
         case "fade": op = p; break;
       }
       if (el.dataset.bob && p >= 1) tf += ` translateY(${Math.sin((lt - at) * 3.2) * +el.dataset.bob}px)`;
-      el.style.transform = `${tf} ${el.dataset.tf || ""}`;
+      el.style.transform = `${el.dataset.tf && el.classList.contains("tag") ? el.dataset.tf + " " + tf : tf + " " + (el.dataset.tf || "")}`;
       el.style.opacity = op;
     });
     root.querySelectorAll(".conf").forEach((c) => {
@@ -376,14 +581,14 @@
       el.style.display = on ? "block" : "none";
       if (!on) return;
       const lt = t - s.start;
-      el.style.clipPath = i > 0 && lt < WIPE ? `circle(${cubicInOut(lt / WIPE) * 80}% at 50% 55%)` : "none";
+      el.style.clipPath = i > 0 && lt < WIPE ? `circle(${cubicInOut(lt / WIPE) * 145}% at ${s.at})` : "none";
       el.style.zIndex = i + 1;
       animate(el, lt);
-      if (FX[s.id]) FX[s.id](lt);
+      if (FX[s.id]) FX[s.id](lt, el);
     });
     const wm = document.getElementById("wm");
     wm.style.zIndex = 50;
-    wm.style.opacity = t < SCENES[6].start ? 1 : 0;
+    wm.style.opacity = t < SCENES[SCENES.length - 1].start ? 1 : 0;
     wm.style.transform = "translateX(-50%)";
   };
 
