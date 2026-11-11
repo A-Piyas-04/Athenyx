@@ -1,0 +1,65 @@
+{
+  "duration": 59.4,
+  "voice": {
+    "style": "Warm, upbeat, friendly narrator. Conversational, a little playful, not salesy. Medium-fast pace with a smile in the voice.",
+    "lines": [
+      { "scene": "hook",    "start": 0.2,  "end": 2.8,  "text": "Shipping code all alone?" },
+      { "scene": "team",    "start": 3.3,  "end": 9.1,  "text": "Meet your code's dream team: nine AI specialists, from security to clean code." },
+      { "scene": "checkup", "start": 9.7,  "end": 13.9, "text": "Athenyx gives your project a checkup, and shows what needs attention first." },
+      { "scene": "ask",     "start": 14.5, "end": 18.7, "text": "Ask anything about your code. Nothing runs until you press start." },
+      { "scene": "experts", "start": 19.3, "end": 23.5, "text": "Then the right two or three experts jump in." },
+      { "scene": "proof",   "start": 24.1, "end": 28.1, "text": "Every finding cites the exact line. No proof? No finding." },
+      { "scene": "bugs",    "start": 28.7, "end": 32.1, "text": "Bugs don't stand a chance." },
+      { "scene": "pick",    "start": 32.7, "end": 37.1, "text": "Compare fixes side by side. Safe, smart, or fast. You pick." },
+      { "scene": "ledger",  "start": 37.7, "end": 41.9, "text": "It remembers every decision, and why you made it." },
+      { "scene": "ship",    "start": 42.5, "end": 46.5, "text": "Before release, get an honest read on whether it's safe to ship." },
+      { "scene": "decide",  "start": 47.1, "end": 50.9, "text": "It never touches your code. They advise. You decide." },
+      { "scene": "free",    "start": 51.5, "end": 55.5, "text": "Your dream team is free. Sign in with GitHub." },
+      { "scene": "end",     "start": 56.1, "end": 59.0, "text": "Athenyx. Your code's dream team." }
+    ]
+  },
+  "music": {
+    "mood": "Bright, bouncy, playful pop with light percussion and plucks, around 110 to 120 BPM. No vocals.",
+    "volume_db": -20,
+    "duck_under_voice_db": -8,
+    "fade_in": 0.5,
+    "fade_out": 2.0
+  },
+  "sfx": [
+    { "t": 3.0,  "kind": "whoosh" }, { "t": 9.4,  "kind": "whoosh" }, { "t": 14.2, "kind": "whoosh" },
+    { "t": 19.0, "kind": "whoosh" }, { "t": 23.8, "kind": "whoosh" }, { "t": 28.4, "kind": "whoosh" },
+    { "t": 32.4, "kind": "whoosh" }, { "t": 37.4, "kind": "whoosh" }, { "t": 42.2, "kind": "whoosh" },
+    { "t": 46.8, "kind": "whoosh" }, { "t": 51.2, "kind": "whoosh" }, { "t": 55.8, "kind": "whoosh" },
+
+    { "t": 0.45, "kind": "pop" },
+    { "t": 3.7,  "kind": "pop" }, { "t": 3.88, "kind": "pop" }, { "t": 4.06, "kind": "pop" },
+    { "t": 4.24, "kind": "pop" }, { "t": 4.42, "kind": "pop" }, { "t": 4.6,  "kind": "pop" },
+    { "t": 4.78, "kind": "pop" }, { "t": 4.96, "kind": "pop" }, { "t": 5.14, "kind": "pop" },
+
+    { "t": 15.2, "kind": "typing", "duration": 1.4 },
+    { "t": 17.45, "kind": "click" },
+    { "t": 17.5, "kind": "sparkle" },
+
+    { "t": 19.7, "kind": "pop" }, { "t": 19.9, "kind": "pop" }, { "t": 20.1, "kind": "pop" },
+
+    { "t": 25.3, "kind": "swish" },
+    { "t": 26.6, "kind": "stamp" },
+
+    { "t": 29.3, "kind": "scurry", "duration": 2.5 },
+    { "t": 29.9, "kind": "boom" },
+
+    { "t": 34.85, "kind": "click" },
+    { "t": 35.3, "kind": "ding" },
+    { "t": 35.6, "kind": "party" },
+
+    { "t": 39.4, "kind": "swish" },
+    { "t": 40.0, "kind": "ding" },
+
+    { "t": 43.4, "kind": "rocket", "duration": 2.6 },
+
+    { "t": 49.0, "kind": "pop" }, { "t": 49.1, "kind": "ding" },
+
+    { "t": 51.95, "kind": "pop" }, { "t": 53.0, "kind": "party" },
+    { "t": 56.0, "kind": "sting" }
+  ]
+}

@@ -1,0 +1,51 @@
+1
+00:00:00,200 --> 00:00:02,800
+Shipping code all alone?
+
+2
+00:00:03,300 --> 00:00:09,100
+Meet your code's dream team: nine AI specialists, from security to clean code.
+
+3
+00:00:09,700 --> 00:00:13,900
+Athenyx gives your project a checkup, and shows what needs attention first.
+
+4
+00:00:14,500 --> 00:00:18,700
+Ask anything about your code. Nothing runs until you press start.
+
+5
+00:00:19,300 --> 00:00:23,500
+Then the right two or three experts jump in.
+
+6
+00:00:24,100 --> 00:00:28,100
+Every finding cites the exact line. No proof? No finding.
+
+7
+00:00:28,700 --> 00:00:32,100
+Bugs don't stand a chance.
+
+8
+00:00:32,700 --> 00:00:37,100
+Compare fixes side by side. Safe, smart, or fast. You pick.
+
+9
+00:00:37,700 --> 00:00:41,900
+It remembers every decision, and why you made it.
+
+10
+00:00:42,500 --> 00:00:46,500
+Before release, get an honest read on whether it's safe to ship.
+
+11
+00:00:47,100 --> 00:00:50,900
+It never touches your code. They advise. You decide.
+
+12
+00:00:51,500 --> 00:00:55,500
+Your dream team is free. Sign in with GitHub.
+
+13
+00:00:56,100 --> 00:00:59,000
+Athenyx. Your code's dream team.
