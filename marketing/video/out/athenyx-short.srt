@@ -7,45 +7,81 @@ Shipping code all alone?
 Meet your code's dream team: nine AI specialists, from security to clean code.
 
 3
-00:00:09,700 --> 00:00:13,900
-Athenyx gives your project a checkup, and shows what needs attention first.
+00:00:09,750 --> 00:00:13,650
+Security Adversary: thinks like a hacker and finds open doors.
 
 4
-00:00:14,500 --> 00:00:18,700
-Ask anything about your code. Nothing runs until you press start.
+00:00:14,150 --> 00:00:18,050
+Architecture Skeptic: asks if your design really needs all that.
 
 5
-00:00:19,300 --> 00:00:23,500
-Then the right two or three experts jump in.
+00:00:18,550 --> 00:00:22,450
+Data Integrity Auditor: makes sure every number adds up.
 
 6
-00:00:24,100 --> 00:00:28,100
-Every finding cites the exact line. No proof? No finding.
+00:00:22,950 --> 00:00:26,850
+Reliability and Performance Engineer: keeps your app fast and steady.
 
 7
-00:00:28,700 --> 00:00:32,100
-Bugs don't stand a chance.
+00:00:27,350 --> 00:00:31,250
+Quality and Testing Critic: finds the cases your tests miss.
 
 8
-00:00:32,700 --> 00:00:37,100
-Compare fixes side by side. Safe, smart, or fast. You pick.
+00:00:31,750 --> 00:00:35,650
+Product and UX Guardian: keeps it simple for real people.
 
 9
-00:00:37,700 --> 00:00:41,900
-It remembers every decision, and why you made it.
+00:00:36,150 --> 00:00:40,050
+DevOps and Operations Auditor: makes launches and rollbacks smooth.
 
 10
-00:00:42,500 --> 00:00:46,500
-Before release, get an honest read on whether it's safe to ship.
+00:00:40,550 --> 00:00:44,450
+Algorithm and Data Structure Specialist: spots slow code early.
 
 11
-00:00:47,100 --> 00:00:50,900
-It never touches your code. They advise. You decide.
+00:00:44,950 --> 00:00:48,850
+Code Quality and Maintainability Engineer: keeps code easy to change.
 
 12
-00:00:51,500 --> 00:00:55,500
-Your dream team is free. Sign in with GitHub.
+00:00:49,300 --> 00:00:53,500
+Athenyx gives your project a checkup, and shows what needs attention first.
 
 13
-00:00:56,100 --> 00:00:59,000
+00:00:54,100 --> 00:00:58,300
+Ask anything about your code. Nothing runs until you press start.
+
+14
+00:00:58,900 --> 00:01:03,100
+Then the right two or three experts jump in.
+
+15
+00:01:03,700 --> 00:01:07,700
+Every finding cites the exact line. No proof? No finding.
+
+16
+00:01:08,300 --> 00:01:11,700
+Bugs don't stand a chance.
+
+17
+00:01:12,300 --> 00:01:16,700
+Compare fixes side by side. Safe, smart, or fast. You pick.
+
+18
+00:01:17,300 --> 00:01:21,500
+It remembers every decision, and why you made it.
+
+19
+00:01:22,100 --> 00:01:26,100
+Before release, get an honest read on whether it's safe to ship.
+
+20
+00:01:26,700 --> 00:01:30,500
+It never touches your code. They advise. You decide.
+
+21
+00:01:31,100 --> 00:01:35,100
+Your dream team is free. Sign in with GitHub.
+
+22
+00:01:35,700 --> 00:01:38,600
 Athenyx. Your code's dream team.

@@ -1,21 +1,140 @@
 {
-  "duration": 59.4,
+  "duration": 99.0,
   "voice": {
     "style": "Warm, upbeat, friendly narrator. Conversational, a little playful, not salesy. Medium-fast pace with a smile in the voice.",
     "lines": [
-      { "scene": "hook",    "start": 0.2,  "end": 2.8,  "text": "Shipping code all alone?" },
-      { "scene": "team",    "start": 3.3,  "end": 9.1,  "text": "Meet your code's dream team: nine AI specialists, from security to clean code." },
-      { "scene": "checkup", "start": 9.7,  "end": 13.9, "text": "Athenyx gives your project a checkup, and shows what needs attention first." },
-      { "scene": "ask",     "start": 14.5, "end": 18.7, "text": "Ask anything about your code. Nothing runs until you press start." },
-      { "scene": "experts", "start": 19.3, "end": 23.5, "text": "Then the right two or three experts jump in." },
-      { "scene": "proof",   "start": 24.1, "end": 28.1, "text": "Every finding cites the exact line. No proof? No finding." },
-      { "scene": "bugs",    "start": 28.7, "end": 32.1, "text": "Bugs don't stand a chance." },
-      { "scene": "pick",    "start": 32.7, "end": 37.1, "text": "Compare fixes side by side. Safe, smart, or fast. You pick." },
-      { "scene": "ledger",  "start": 37.7, "end": 41.9, "text": "It remembers every decision, and why you made it." },
-      { "scene": "ship",    "start": 42.5, "end": 46.5, "text": "Before release, get an honest read on whether it's safe to ship." },
-      { "scene": "decide",  "start": 47.1, "end": 50.9, "text": "It never touches your code. They advise. You decide." },
-      { "scene": "free",    "start": 51.5, "end": 55.5, "text": "Your dream team is free. Sign in with GitHub." },
-      { "scene": "end",     "start": 56.1, "end": 59.0, "text": "Athenyx. Your code's dream team." }
+      {
+        "scene": "hook",
+        "start": 0.2,
+        "end": 2.8,
+        "text": "Shipping code all alone?"
+      },
+      {
+        "scene": "team",
+        "start": 3.3,
+        "end": 9.1,
+        "text": "Meet your code's dream team: nine AI specialists, from security to clean code."
+      },
+      {
+        "scene": "p1",
+        "start": 9.75,
+        "end": 13.65,
+        "text": "Security Adversary: thinks like a hacker and finds open doors."
+      },
+      {
+        "scene": "p2",
+        "start": 14.15,
+        "end": 18.05,
+        "text": "Architecture Skeptic: asks if your design really needs all that."
+      },
+      {
+        "scene": "p3",
+        "start": 18.55,
+        "end": 22.45,
+        "text": "Data Integrity Auditor: makes sure every number adds up."
+      },
+      {
+        "scene": "p4",
+        "start": 22.95,
+        "end": 26.85,
+        "text": "Reliability and Performance Engineer: keeps your app fast and steady."
+      },
+      {
+        "scene": "p5",
+        "start": 27.35,
+        "end": 31.25,
+        "text": "Quality and Testing Critic: finds the cases your tests miss."
+      },
+      {
+        "scene": "p6",
+        "start": 31.75,
+        "end": 35.65,
+        "text": "Product and UX Guardian: keeps it simple for real people."
+      },
+      {
+        "scene": "p7",
+        "start": 36.15,
+        "end": 40.05,
+        "text": "DevOps and Operations Auditor: makes launches and rollbacks smooth."
+      },
+      {
+        "scene": "p8",
+        "start": 40.55,
+        "end": 44.45,
+        "text": "Algorithm and Data Structure Specialist: spots slow code early."
+      },
+      {
+        "scene": "p9",
+        "start": 44.95,
+        "end": 48.85,
+        "text": "Code Quality and Maintainability Engineer: keeps code easy to change."
+      },
+      {
+        "scene": "checkup",
+        "start": 49.3,
+        "end": 53.5,
+        "text": "Athenyx gives your project a checkup, and shows what needs attention first."
+      },
+      {
+        "scene": "ask",
+        "start": 54.1,
+        "end": 58.3,
+        "text": "Ask anything about your code. Nothing runs until you press start."
+      },
+      {
+        "scene": "experts",
+        "start": 58.9,
+        "end": 63.1,
+        "text": "Then the right two or three experts jump in."
+      },
+      {
+        "scene": "proof",
+        "start": 63.7,
+        "end": 67.7,
+        "text": "Every finding cites the exact line. No proof? No finding."
+      },
+      {
+        "scene": "bugs",
+        "start": 68.3,
+        "end": 71.7,
+        "text": "Bugs don't stand a chance."
+      },
+      {
+        "scene": "pick",
+        "start": 72.3,
+        "end": 76.7,
+        "text": "Compare fixes side by side. Safe, smart, or fast. You pick."
+      },
+      {
+        "scene": "ledger",
+        "start": 77.3,
+        "end": 81.5,
+        "text": "It remembers every decision, and why you made it."
+      },
+      {
+        "scene": "ship",
+        "start": 82.1,
+        "end": 86.1,
+        "text": "Before release, get an honest read on whether it's safe to ship."
+      },
+      {
+        "scene": "decide",
+        "start": 86.7,
+        "end": 90.5,
+        "text": "It never touches your code. They advise. You decide."
+      },
+      {
+        "scene": "free",
+        "start": 91.1,
+        "end": 95.1,
+        "text": "Your dream team is free. Sign in with GitHub."
+      },
+      {
+        "scene": "end",
+        "start": 95.7,
+        "end": 98.6,
+        "text": "Athenyx. Your code's dream team."
+      }
     ]
   },
   "music": {
@@ -26,40 +145,396 @@
     "fade_out": 2.0
   },
   "sfx": [
-    { "t": 3.0,  "kind": "whoosh" }, { "t": 9.4,  "kind": "whoosh" }, { "t": 14.2, "kind": "whoosh" },
-    { "t": 19.0, "kind": "whoosh" }, { "t": 23.8, "kind": "whoosh" }, { "t": 28.4, "kind": "whoosh" },
-    { "t": 32.4, "kind": "whoosh" }, { "t": 37.4, "kind": "whoosh" }, { "t": 42.2, "kind": "whoosh" },
-    { "t": 46.8, "kind": "whoosh" }, { "t": 51.2, "kind": "whoosh" }, { "t": 55.8, "kind": "whoosh" },
-
-    { "t": 0.45, "kind": "pop" },
-    { "t": 3.7,  "kind": "pop" }, { "t": 3.88, "kind": "pop" }, { "t": 4.06, "kind": "pop" },
-    { "t": 4.24, "kind": "pop" }, { "t": 4.42, "kind": "pop" }, { "t": 4.6,  "kind": "pop" },
-    { "t": 4.78, "kind": "pop" }, { "t": 4.96, "kind": "pop" }, { "t": 5.14, "kind": "pop" },
-
-    { "t": 15.2, "kind": "typing", "duration": 1.4 },
-    { "t": 17.45, "kind": "click" },
-    { "t": 17.5, "kind": "sparkle" },
-
-    { "t": 19.7, "kind": "pop" }, { "t": 19.9, "kind": "pop" }, { "t": 20.1, "kind": "pop" },
-
-    { "t": 25.3, "kind": "swish" },
-    { "t": 26.6, "kind": "stamp" },
-
-    { "t": 29.3, "kind": "scurry", "duration": 2.5 },
-    { "t": 29.9, "kind": "boom" },
-
-    { "t": 34.85, "kind": "click" },
-    { "t": 35.3, "kind": "ding" },
-    { "t": 35.6, "kind": "party" },
-
-    { "t": 39.4, "kind": "swish" },
-    { "t": 40.0, "kind": "ding" },
-
-    { "t": 43.4, "kind": "rocket", "duration": 2.6 },
-
-    { "t": 49.0, "kind": "pop" }, { "t": 49.1, "kind": "ding" },
-
-    { "t": 51.95, "kind": "pop" }, { "t": 53.0, "kind": "party" },
-    { "t": 56.0, "kind": "sting" }
+    {
+      "t": 0.45,
+      "kind": "pop"
+    },
+    {
+      "t": 3.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 3.7,
+      "kind": "pop"
+    },
+    {
+      "t": 3.88,
+      "kind": "pop"
+    },
+    {
+      "t": 4.06,
+      "kind": "pop"
+    },
+    {
+      "t": 4.24,
+      "kind": "pop"
+    },
+    {
+      "t": 4.42,
+      "kind": "pop"
+    },
+    {
+      "t": 4.6,
+      "kind": "pop"
+    },
+    {
+      "t": 4.78,
+      "kind": "pop"
+    },
+    {
+      "t": 4.96,
+      "kind": "pop"
+    },
+    {
+      "t": 5.14,
+      "kind": "pop"
+    },
+    {
+      "t": 9.4,
+      "kind": "whoosh"
+    },
+    {
+      "t": 9.9,
+      "kind": "pop"
+    },
+    {
+      "t": 10.25,
+      "kind": "pop"
+    },
+    {
+      "t": 10.4,
+      "kind": "pop"
+    },
+    {
+      "t": 10.55,
+      "kind": "pop"
+    },
+    {
+      "t": 10.7,
+      "kind": "swish"
+    },
+    {
+      "t": 13.8,
+      "kind": "whoosh"
+    },
+    {
+      "t": 14.3,
+      "kind": "pop"
+    },
+    {
+      "t": 14.65,
+      "kind": "pop"
+    },
+    {
+      "t": 14.8,
+      "kind": "pop"
+    },
+    {
+      "t": 14.95,
+      "kind": "pop"
+    },
+    {
+      "t": 15.1,
+      "kind": "swish"
+    },
+    {
+      "t": 18.2,
+      "kind": "whoosh"
+    },
+    {
+      "t": 18.7,
+      "kind": "pop"
+    },
+    {
+      "t": 19.05,
+      "kind": "pop"
+    },
+    {
+      "t": 19.2,
+      "kind": "pop"
+    },
+    {
+      "t": 19.35,
+      "kind": "pop"
+    },
+    {
+      "t": 19.5,
+      "kind": "swish"
+    },
+    {
+      "t": 22.6,
+      "kind": "whoosh"
+    },
+    {
+      "t": 23.1,
+      "kind": "pop"
+    },
+    {
+      "t": 23.45,
+      "kind": "pop"
+    },
+    {
+      "t": 23.6,
+      "kind": "pop"
+    },
+    {
+      "t": 23.75,
+      "kind": "pop"
+    },
+    {
+      "t": 23.9,
+      "kind": "swish"
+    },
+    {
+      "t": 27.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 27.5,
+      "kind": "pop"
+    },
+    {
+      "t": 27.85,
+      "kind": "pop"
+    },
+    {
+      "t": 28.0,
+      "kind": "pop"
+    },
+    {
+      "t": 28.15,
+      "kind": "pop"
+    },
+    {
+      "t": 28.3,
+      "kind": "swish"
+    },
+    {
+      "t": 31.4,
+      "kind": "whoosh"
+    },
+    {
+      "t": 31.9,
+      "kind": "pop"
+    },
+    {
+      "t": 32.25,
+      "kind": "pop"
+    },
+    {
+      "t": 32.4,
+      "kind": "pop"
+    },
+    {
+      "t": 32.55,
+      "kind": "pop"
+    },
+    {
+      "t": 32.7,
+      "kind": "swish"
+    },
+    {
+      "t": 35.8,
+      "kind": "whoosh"
+    },
+    {
+      "t": 36.3,
+      "kind": "pop"
+    },
+    {
+      "t": 36.65,
+      "kind": "pop"
+    },
+    {
+      "t": 36.8,
+      "kind": "pop"
+    },
+    {
+      "t": 36.95,
+      "kind": "pop"
+    },
+    {
+      "t": 37.1,
+      "kind": "swish"
+    },
+    {
+      "t": 40.2,
+      "kind": "whoosh"
+    },
+    {
+      "t": 40.7,
+      "kind": "pop"
+    },
+    {
+      "t": 41.05,
+      "kind": "pop"
+    },
+    {
+      "t": 41.2,
+      "kind": "pop"
+    },
+    {
+      "t": 41.35,
+      "kind": "pop"
+    },
+    {
+      "t": 41.5,
+      "kind": "swish"
+    },
+    {
+      "t": 44.6,
+      "kind": "whoosh"
+    },
+    {
+      "t": 45.1,
+      "kind": "pop"
+    },
+    {
+      "t": 45.45,
+      "kind": "pop"
+    },
+    {
+      "t": 45.6,
+      "kind": "pop"
+    },
+    {
+      "t": 45.75,
+      "kind": "pop"
+    },
+    {
+      "t": 45.9,
+      "kind": "swish"
+    },
+    {
+      "t": 49.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 53.8,
+      "kind": "whoosh"
+    },
+    {
+      "t": 54.8,
+      "kind": "typing",
+      "duration": 1.4
+    },
+    {
+      "t": 57.05,
+      "kind": "click"
+    },
+    {
+      "t": 57.1,
+      "kind": "sparkle"
+    },
+    {
+      "t": 58.6,
+      "kind": "whoosh"
+    },
+    {
+      "t": 59.3,
+      "kind": "pop"
+    },
+    {
+      "t": 59.5,
+      "kind": "pop"
+    },
+    {
+      "t": 59.7,
+      "kind": "pop"
+    },
+    {
+      "t": 63.4,
+      "kind": "whoosh"
+    },
+    {
+      "t": 64.9,
+      "kind": "swish"
+    },
+    {
+      "t": 66.2,
+      "kind": "stamp"
+    },
+    {
+      "t": 68.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 68.9,
+      "kind": "scurry",
+      "duration": 2.5
+    },
+    {
+      "t": 69.5,
+      "kind": "boom"
+    },
+    {
+      "t": 72.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 74.45,
+      "kind": "click"
+    },
+    {
+      "t": 74.9,
+      "kind": "ding"
+    },
+    {
+      "t": 75.2,
+      "kind": "party"
+    },
+    {
+      "t": 77.0,
+      "kind": "whoosh"
+    },
+    {
+      "t": 79.0,
+      "kind": "swish"
+    },
+    {
+      "t": 79.6,
+      "kind": "ding"
+    },
+    {
+      "t": 81.8,
+      "kind": "whoosh"
+    },
+    {
+      "t": 83.0,
+      "kind": "rocket",
+      "duration": 2.6
+    },
+    {
+      "t": 86.4,
+      "kind": "whoosh"
+    },
+    {
+      "t": 88.6,
+      "kind": "pop"
+    },
+    {
+      "t": 88.7,
+      "kind": "ding"
+    },
+    {
+      "t": 90.8,
+      "kind": "whoosh"
+    },
+    {
+      "t": 91.55,
+      "kind": "pop"
+    },
+    {
+      "t": 92.6,
+      "kind": "party"
+    },
+    {
+      "t": 95.4,
+      "kind": "whoosh"
+    },
+    {
+      "t": 95.6,
+      "kind": "sting"
+    }
   ]
 }

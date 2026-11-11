@@ -80,6 +80,18 @@
   }
   .pill svg { width: 58px; height: 58px; fill: var(--ink); }
 
+  .fit { white-space: nowrap; }
+  .counter { left: 0; right: 0; top: 92px; display: flex; justify-content: center; }
+  .counter span {
+    background: var(--ink); color: #fff;
+    font: 800 30px "Bricolage Grotesque"; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 10px 26px 12px; border-radius: 999px;
+    box-shadow: 5px 6px 0 rgba(26, 18, 6, 0.35);
+  }
+  .say { left: 0; right: 0; display: flex; justify-content: center; }
+  .say .bubble { position: relative; display: inline-grid; height: 140px; padding: 0 56px; font-size: 64px; white-space: nowrap; }
+  .say .bubble::after { top: -17px; bottom: auto; left: calc(50% - 13px); transform: rotate(225deg); }
+
   #end .brand svg { width: 190px; height: 190px; filter: drop-shadow(7px 9px 0 var(--ink)); }
 
   #wm { left: 50%; bottom: 96px; transform: translateX(-50%); font-size: 40px; }
@@ -337,22 +349,53 @@
 <script>
   const FPS = 30;
   const WIPE = 0.45;
+  // One scene per specialist, right after the team reveal.
+  const PERSONAS = [
+    { img: "ninja", bg: "var(--lilac)", a: "Security", b: "Adversary", say: "Thinks like a hacker.", props: ["lock", "key", "shield"] },
+    { img: "architect", bg: "var(--orange)", a: "Architecture", b: "Skeptic", say: "Is all this really needed?", props: ["building-construction", "triangular-ruler", "thinking-face"] },
+    { img: "judge", bg: "var(--sky)", a: "Data Integrity", b: "Auditor", say: "Every number adds up.", props: ["abacus", "balance-scale", "bar-chart"] },
+    { img: "firefighter", bg: "var(--coral)", a: "Reliability &amp; Performance", b: "Engineer", say: "Fast, steady, always up.", props: ["high-voltage", "stopwatch", "fire-extinguisher"] },
+    { img: "scientist", bg: "var(--mint)", a: "Quality &amp; Testing", b: "Critic", say: "What about this case?", props: ["test-tube", "magnifier", "bug"] },
+    { img: "artist", bg: "var(--pink)", a: "Product &amp; UX", b: "Guardian", say: "Easy for real people.", props: ["artist-palette", "heart", "smiling-face-with-heart-eyes"] },
+    { img: "mechanic", bg: "var(--teal)", a: "DevOps &amp; Operations", b: "Auditor", say: "Smooth launches, safe rollbacks.", props: ["rocket", "wrench", "gear"] },
+    { img: "wizard", bg: "var(--yellow)", disc: "var(--lilac)", a: "Algorithm &amp; Data Structure", b: "Specialist", say: "Spots the slow parts.", props: ["puzzle-piece", "snail", "high-voltage"] },
+    { img: "teacher", bg: "var(--lime)", a: "Code Quality &amp; Maintainability", b: "Engineer", say: "Clean code, easy changes.", props: ["broom", "sparkles", "books"] },
+  ];
+  const PROP_SPOTS = [
+    { left: 50, top: 650, w: 190, r: -12, at: 0.85 },
+    { left: 840, top: 630, w: 190, r: 10, at: 1.0 },
+    { left: 830, top: 1010, w: 180, r: -6, at: 1.15 },
+  ];
+  const PERSONA_SECONDS = 4.4;
+  document.getElementById("team").insertAdjacentHTML("afterend", PERSONAS.map((p, i) => `
+<section class="scene" id="p${i + 1}" style="background:${p.bg}">
+  <div class="vrays"></div>
+  <div class="counter a" data-in="pop" data-at="0.1"><span>Specialist ${i + 1} of 9</span></div>
+  <div class="t1 head a" style="top:170px">
+    <div class="line a fit" data-in="pop" data-at="0.2" style="font-size:104px">${p.a}</div><br />
+    <div class="line outline a fit" data-in="pop" data-at="0.4" data-tf="rotate(-2deg)" style="font-size:172px;margin-top:10px">${p.b}</div>
+  </div>
+  ${p.props.map((prop, k) => {
+    const s = PROP_SPOTS[k];
+    return `<img class="emoji a" data-in="pop" data-at="${s.at}" data-bob="6" data-tf="rotate(${s.r}deg)" src="../posters/assets/${prop}.svg" style="left:${s.left}px;top:${s.top}px;width:${s.w}px" alt="" />`;
+  }).join("")}
+  <div class="pop a" data-in="pop" data-at="0.5" data-bob="4" style="--w:500px;--c:${p.disc || "var(--yellow)"};left:290px;top:600px"><div class="disc"></div><img src="../posters/assets/${p.img}.svg" alt="" /></div>
+  <div class="say a" data-in="pop" data-at="1.3" data-tf="rotate(-2deg)" style="top:1290px"><div class="bubble">${p.say}</div></div>
+</section>`).join(""));
+
   const SCENES = [
     { id: "hook", start: 0 },
     { id: "team", start: 3.0, at: "50% 50%" },
-    { id: "checkup", start: 9.4, at: "15% 85%" },
-    { id: "ask", start: 14.2, at: "85% 20%" },
-    { id: "experts", start: 19.0, at: "15% 30%" },
-    { id: "proof", start: 23.8, at: "85% 80%" },
-    { id: "bugs", start: 28.4, at: "50% 55%" },
-    { id: "pick", start: 32.4, at: "15% 85%" },
-    { id: "ledger", start: 37.4, at: "85% 20%" },
-    { id: "ship", start: 42.2, at: "50% 90%" },
-    { id: "decide", start: 46.8, at: "15% 30%" },
-    { id: "free", start: 51.2, at: "50% 55%" },
-    { id: "end", start: 55.8, at: "50% 50%" },
+    ...PERSONAS.map((_, i) => ({ id: `p${i + 1}`, start: 9.4 + i * PERSONA_SECONDS, at: ["15% 85%", "85% 20%", "50% 55%"][i % 3] })),
   ];
-  const DURATION = 59.4;
+  const AFTER = [
+    ["checkup", 9.4, "15% 85%"], ["ask", 14.2, "85% 20%"], ["experts", 19.0, "15% 30%"], ["proof", 23.8, "85% 80%"],
+    ["bugs", 28.4, "50% 55%"], ["pick", 32.4, "15% 85%"], ["ledger", 37.4, "85% 20%"], ["ship", 42.2, "50% 90%"],
+    ["decide", 46.8, "15% 30%"], ["free", 51.2, "50% 55%"], ["end", 55.8, "50% 50%"],
+  ];
+  const SHIFT = PERSONAS.length * PERSONA_SECONDS;
+  AFTER.forEach(([id, start, at]) => SCENES.push({ id, start: +(start + SHIFT).toFixed(2), at }));
+  const DURATION = +(59.4 + SHIFT).toFixed(2);
   window.VIDEO = { FPS, DURATION };
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -438,6 +481,7 @@
   scatter("decide", 14, 26, [...TOP, [360, 640, 360, 140]]);
   scatter("free", 15, 50, [...TOP, [20, 600, 1040, 100], [260, 1080, 560, 100], [20, 1400, 1040, 300]]);
   scatter("end", 16, 60, [[20, 60, 1040, 420], [20, 1280, 1040, 420]]);
+  PERSONAS.forEach((_, i) => scatter(`p${i + 1}`, 30 + i, 26, [[20, 30, 200, 60], [860, 30, 200, 60], [20, 1470, 1040, 200]]));
 
   function press(lt, from, down) {
     const ph = cubicOut(prog(lt, from, 0.5));
@@ -580,6 +624,13 @@
       const on = t >= s.start && t < end;
       el.style.display = on ? "block" : "none";
       if (!on) return;
+      if (!el.dataset.fitted) {
+        el.querySelectorAll(".fit").forEach((f) => {
+          const w = f.scrollWidth;
+          if (w > 960) f.style.fontSize = (parseFloat(f.style.fontSize) * 960) / w + "px";
+        });
+        el.dataset.fitted = "1";
+      }
       const lt = t - s.start;
       el.style.clipPath = i > 0 && lt < WIPE ? `circle(${cubicInOut(lt / WIPE) * 145}% at ${s.at})` : "none";
       el.style.zIndex = i + 1;
